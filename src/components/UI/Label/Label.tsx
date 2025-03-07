@@ -1,5 +1,5 @@
 import React from "react";
-import ".././assets/styles/label.scss";
+import "./label.scss";
 
 interface LabelProps {
   variant?: "primary" | "secondary";

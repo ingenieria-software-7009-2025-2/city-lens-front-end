@@ -1,3 +1,32 @@
-.Input {
+.input {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	transition: border-color 0.3s, box-shadow 0.3s;
+	outline: none;
   
-}
+	&.primary {
+	  border-color: #007bff;
+  
+	  &:focus {
+		border-color: #0056b3;
+		box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+	  }
+	}
+  
+	&.secondary {
+	  border-color: #6c757d;
+  
+	  &:focus {
+		border-color: #495057;
+		box-shadow: 0 0 5px rgba(108, 117, 125, 0.5);
+	  }
+	}
+  
+	&:hover {
+	  border-color: darken(#ccc, 10%);
+	}
+  }
+  

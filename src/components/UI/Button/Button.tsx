@@ -1,5 +1,5 @@
 import React from "react";
-import ".././assets/styles/button.scss"
+import "./Button.scss"
 
 interface ButtonProps {
   type?: "button" | "submit";
