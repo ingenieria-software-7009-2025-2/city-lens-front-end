@@ -1,5 +1,6 @@
 import React from "react";
 import ".././assets/styles/button.scss"
+
 interface ButtonProps {
   type?: "button" | "submit";
   variant?: "primary" | "secondary";
@@ -21,3 +22,4 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 export default Button;
+export { Button }; 
