@@ -53,7 +53,7 @@ export const Login: React.FC = () => {
               <>
                 <h1 className={styles.title}>Start Now!</h1>
                 <p>Register now to join our community</p>
-                <Button onClick={() => setIsRegister(false)} id="login">Login</Button>
+                <Button className={styles.ghost} onClick={() => setIsRegister(false)} id="login">Login</Button>
               </>
             ) : (
               <>
