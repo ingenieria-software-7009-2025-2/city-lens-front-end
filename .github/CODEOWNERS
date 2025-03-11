@@ -1,0 +1,12 @@
+# Lista global de CODEOWNERS
+* @EdgarMontelongo @MoisesAGC @Orbitalx1 @brandonmacal42 @wallsified @LuisBerna
+
+# Archivos gráficos modificados serán notificados en lo particular. Esto para verificar
+# concordancia con la imagen grafica de la interfaz. 
+*.css @wallsified
+*.png @wallsified
+*.ico @wallsified
+*.jpeg @wallsified
+*.jpg @wallsified
+*.svg @wallsified
+
