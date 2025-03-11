@@ -53,13 +53,13 @@ export const Login: React.FC = () => {
               <>
                 <h1 className={styles.title}>Start Now!</h1>
                 <p>Register now to join our community</p>
-                <Button className={styles.ghost} onClick={() => setIsRegister(false)} id="login">Login</Button>
+                <Button className="ghost" onClick={() => setIsRegister(false)} id="login">Login</Button>
               </>
             ) : (
               <>
                 <h1 className={styles.title}>Start Now!</h1>
                 <p>Register now to join our community</p>
-                <Button className={styles.ghost} onClick={() => setIsRegister(true)} id="register">Register</Button>
+                <Button className="ghost" onClick={() => setIsRegister(true)} id="register">Register</Button>
               </>
             )}
           </div>

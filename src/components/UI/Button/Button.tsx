@@ -3,7 +3,6 @@ import "./Button.scss";
 
 interface ButtonProps {
     type?: "button" | "submit";
-    variant?: "primary" | "secondary";
     children: React.ReactNode;
     onClick?: () => void;
     className?: string; // Nuevo prop para clases adicionales
@@ -14,7 +13,6 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   type = "button",
-  variant = "primary",
   children,
   onClick,
   className = "",
@@ -22,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`button ${variant} ${className}`.trim()}
+      className={`button ${className}`.trim()}
       type={type}
       onClick={onClick}
       {...props}
