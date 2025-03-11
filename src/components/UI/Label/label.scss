@@ -1,0 +1,17 @@
+.label {
+	font-size: 14px;
+	margin-bottom: 5px;
+	display: block;
+	color: #333;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
+  
+	&.primary {
+	  color: #5e6589;
+	}
+  
+	&.secondary {
+	  color: #6c757d;
+	}
+  }
+  
