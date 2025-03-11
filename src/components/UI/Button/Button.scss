@@ -1,33 +1,49 @@
+// Button.module.scss
 .button {
-	padding: 10px 15px;
-	font-size: 16px;
-	font-weight: bold;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background 0.3s, transform 0.2s;
+	position: relative;
+	border-radius: 20px;
+	border: 1px solid #4bb6b7;
+	background-color: #4bb6b7;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
   
 	&:hover {
-	  transform: scale(1.05);
+	  letter-spacing: 3px;
 	}
   
-  
-  &.primary {
-	background-color: #359b2f;
-	color: white;
-	border: none;
-  
-	&:hover {
-	  background-color: #0056b3;
+	&:active {
+	  transform: scale(0.95);
 	}
-  }
   
-  &.secondary {
-	background-color: #6c757d;
-	color: white;
-	border: none;
+	&:focus {
+	  outline: none;
+	}
   
-	&:hover {
-	  background-color: #5a6268;
+	&.ghost {
+	  background-color: rgba(225, 225, 225, 0.2);
+	  border: 2px solid #fff;
+	  color: #fff;
 	}
   }
-}
+  
+  // Form.module.scss
+ 
+  
+  // Input.module.scss
+  .input {
+	background-color: #eee;
+	border-radius: 10px;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+	font-size: 14px;
+  }
+  
+  // Label.module.scss
+  .label {
+	font-size: 14px;
+	user-select: none;
+  }
+  

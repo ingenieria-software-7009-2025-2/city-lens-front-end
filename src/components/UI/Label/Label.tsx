@@ -5,15 +5,17 @@ interface LabelProps {
   variant?: "primary" | "secondary";
   children: React.ReactNode;
   htmlFor?: string;
+  className?: string; // Clase opcional para personalización
 }
 
 const Label: React.FC<LabelProps> = ({
   variant = "primary",
   children,
   htmlFor,
+  className,
 }) => {
   return (
-    <label className={`label ${variant}`} htmlFor={htmlFor}>
+    <label className={`label ${variant} ${className || ''}`.trim()} htmlFor={htmlFor}>
       {children}
     </label>
   );
