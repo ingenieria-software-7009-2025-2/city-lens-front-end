@@ -1,12 +1,10 @@
 import React from "react";
 import "./Input.scss";
 
-interface InputProps {
-  type?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: "primary" | "secondary";
+  className?: string; // Clase opcional para personalización
 }
 
 const Input: React.FC<InputProps> = ({
@@ -15,14 +13,17 @@ const Input: React.FC<InputProps> = ({
   value,
   onChange,
   variant = "primary",
+  className,
+  ...props
 }) => {
   return (
     <input
-      className={`input ${variant}`}
+      className={`input ${variant} ${className || ''}`.trim()}
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      {...props} // <-- Esto permite usar `id`, `name`, etc. directamente
     />
   );
 };
