@@ -95,7 +95,6 @@ export const Login: React.FC = () => {
                     className={styles.ghost}
                     onClick={() => {
                       setIsRegister(false); // Cambiar al formulario de login
-                      navigate('/menu'); // Redirigir al menú
                     }}
                     id="login"
                   >
