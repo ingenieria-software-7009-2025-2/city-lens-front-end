@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets//images/react.svg'
-import viteLogo from './assets/images/vite.svg'
-import './assets/styles/app.scss'
+import { Routes, Route } from 'react-router-dom';
+import './assets/styles/app.scss';
 import { Login } from './pages/Login/Login';
-function App() {
-  const [count, setCount] = useState(0)
+import { Menu } from './pages/Menu/Menu'; 
 
+function App() {
   return (
-    <>
-      <Login></Login>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/menu" element={<Menu />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

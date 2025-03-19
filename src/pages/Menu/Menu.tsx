@@ -37,7 +37,7 @@ export const Menu: React.FC = () => {
                 {/* Right Section */}
                 <div className={styles.right}>
                     <img
-                        src="https://via.placeholder.com/400"
+                        src="../..//assets/images/city2.jpg"
                         alt="Placeholder"
                         className={styles.image}
                     />
