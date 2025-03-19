@@ -31,6 +31,7 @@ export const Login: React.FC = () => {
         const response = await login(email, password);
         localStorage.setItem('token', response.token); // Guardar el token en localStorage
         alert('Login exitoso');
+        navigate('/menu')
       }
     } catch (error) {
       setError('Error en el proceso. Por favor, inténtalo de nuevo.'); // Mostrar mensaje de error
@@ -39,15 +40,6 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      {/* Div adicional con un botón para probar la navegación */}
-      <div style={{ marginBottom: '20px', textAlign: 'center', border: '1px solid red' }}>
-        <Button onClick={() => navigate('/menu')}>
-          Ir al Menú
-        </Button>
-      </div>
-
-      {/* Contenedor principal del formulario */}
       <div className={`${styles.container} ${isRegister ? styles['right-panel-active'] : ''}`} id="container">
         {/* Formulario de Register */}
         {isRegister && (
@@ -123,6 +115,6 @@ export const Login: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
