@@ -1,15 +1,12 @@
-import { Routes, Route } from 'react-router-dom';
-import './assets/styles/app.scss';
-import { Login } from './pages/Login/Login';
-import { Menu } from './pages/Menu/Menu'; 
+import './assets/styles/app.scss'
+import {Login} from './pages/login';
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/menu" element={<Menu />} />
-    </Routes>
-  );
+    return (
+        <>
+            <Login></Login>
+        </>
+    )
 }
 
-export default App;
+export default App
