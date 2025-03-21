@@ -1,5 +1,5 @@
 {
-  "name": "city-lens-typescript-test",
+  "name": "city-lens-front-end",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "saas": "^1.0.0",
-    "sass-embedded": "^1.85.1"
+    "sass-embedded": "^1.85.1",
+    "react-router-dom": "^7.3.0",
+    "axios": "^1.8.3"
   },
   "devDependencies": {
     "@chakra-ui/react": "^2.10.6",
@@ -31,19 +33,20 @@
     "globals": "^15.15.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "react-styleguidist": "^13.1.4"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "La configuración de las dependencias del front end de City Lens",
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wallsified/city-lens-typescript-test.git"
   },
   "bugs": {
-    "url": "https://github.com/wallsified/city-lens-typescript-test/issues"
+    "url": "https://github.com/ingenieria-software-7009-2025-2/city-lens-front-end/issues"
   },
-  "homepage": "https://github.com/wallsified/city-lens-typescript-test#readme"
+  "homepage": "https://github.com/ingenieria-software-7009-2025-2/city-lens-front-end#readme"
 }

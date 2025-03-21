@@ -1,6 +1,6 @@
 // components/ui/index.ts
-//import button from './button';
-export {default as button} from './button/button.tsx';
-export {default as form} from './form/form.tsx';
-export {default as label} from './label/label.tsx';
-export {default as input} from './input/input.tsx';
+//import Button from './Button';
+export { default as Button } from './Button/Button';
+export { default as Form } from './Form/Form';
+export { default as Label } from './Label/Label';
+export { default as Input } from './Label/Label';
