@@ -10,7 +10,7 @@ interface ButtonProps {
     id?: string; // Agregamos id como opcional
   }
   
-
+  
 
 const Button: React.FC<ButtonProps> = ({
   type = "button",
