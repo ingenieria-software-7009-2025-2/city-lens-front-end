@@ -4,7 +4,7 @@ import { Button } from '../../components/UI/Button/Button';
 import { Input } from '../../components/UI/Input/Input';
 import { Label } from '../../components/UI/Label/Label';
 import styles from './Login.module.scss';
-import { login, register } from '../../api/services/auth';
+import { login, register } from '../../api';
 import { useNavigate } from 'react-router-dom'; // Para redirigir al usuario
 
 export const Login: React.FC = () => {
@@ -30,7 +30,7 @@ export const Login: React.FC = () => {
         // Lógica de login
         const response = await login(email, password);
         localStorage.setItem('token', response.token); // Guardar el token en localStorage
-        alert('Login exitoso');
+        alert('Inicio de Sesión Exitoso');
         navigate('/menu')
       }
     } catch (error) {
@@ -43,44 +43,44 @@ export const Login: React.FC = () => {
       <div className={`${styles.container} ${isRegister ? styles['right-panel-active'] : ''}`} id="container">
         {/* Formulario de Register */}
         {isRegister && (
-          <div className={`${styles['form-container']} ${styles['register-container']}`}>
-            <Form onSubmit={handleSubmit}>
-              <h1>Register here</h1>
-              <Label htmlFor="name">Name:</Label>
-              <Input type="text" placeholder="Enter your name" id="name" onChange={(e) => setName(e.target.value)} />
-              <Label htmlFor="lastName">Last Name:</Label>
-              <Input
-                type="text"
-                placeholder="Enter your last name"
-                id="lastName"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <Label htmlFor="email">Email:</Label>
-              <Input type="email" placeholder="Enter your email" id="registerEmail" onChange={(e) => setEmail(e.target.value)} />
-              <Label htmlFor="password">Password:</Label>
-              <Input type="password" placeholder="Enter your password" id="registerPassword" value={password} onChange={(e) => setPassword(e.target.value)} />
-              {/* Mostrar error si existe */}
-              {error && <p className={styles.error}>{error}</p>}
-              <Button type="submit">Register</Button>
-            </Form>
-          </div>
+            <div className={`${styles['form-container']} ${styles['register-container']}`}>
+              <Form onSubmit={handleSubmit}>
+                <h1>Registrate Aquí</h1>
+                <Label htmlFor="name">Nombre(s):</Label>
+                <Input type="text" placeholder="Escribe tu(s) nombre(s)" id="name" onChange={(e) => setName(e.target.value)} />
+                <Label htmlFor="lastName">Apellidos:</Label>
+                <Input
+                    type="text"
+                    placeholder="Escribe tus apellidos"
+                    id="lastName"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                />
+                <Label htmlFor="email">Email:</Label>
+                <Input type="email" placeholder="Escribe el email para tu cuenta" id="registerEmail" onChange={(e) => setEmail(e.target.value)} />
+                <Label htmlFor="password">Contraseña:</Label>
+                <Input type="password" placeholder="Escribe la contraseña para tu cuenta" id="registerPassword" value={password} onChange={(e) => setPassword(e.target.value)} />
+                {/* Mostrar error si existe */}
+                {error && <p className={styles.error}>{error}</p>}
+                <Button type="submit">Registrarse</Button>
+              </Form>
+            </div>
         )}
 
         {/* Formulario de Login */}
         {!isRegister && (
-          <div className={`${styles['form-container']} ${styles['login-container']}`}>
-            <Form onSubmit={handleSubmit}>
-              <h1>Login here</h1>
-              <Label htmlFor="email">Email:</Label>
-              <Input type="email" placeholder="Enter your email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <Label htmlFor="password">Password:</Label>
-              <Input type="password" placeholder="Enter your password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              {/* Mostrar error si existe */}
-              {error && <p className={styles.error}>{error}</p>}
-              <Button type="submit">Login</Button>
-            </Form>
-          </div>
+            <div className={`${styles['form-container']} ${styles['login-container']}`}>
+              <Form onSubmit={handleSubmit}>
+                <h1>¡Bienvenido!</h1>
+                <Label htmlFor="email">Correo:</Label>
+                <Input type="email" placeholder="Escribe tu correo" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Label htmlFor="password">Contraseña:</Label>
+                <Input type="password" placeholder="Escribe tu contraseña" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                {/* Mostrar error si existe */}
+                {error && <p className={styles.error}>{error}</p>}
+                <Button type="submit">Iniciar Sesión</Button>
+              </Form>
+            </div>
         )}
 
         {/* Panel de Overlay */}
@@ -88,27 +88,27 @@ export const Login: React.FC = () => {
           <div className={styles['overlay']}>
             <div className={`${styles['overlay-panel']} ${isRegister ? styles['overlay-left'] : styles['overlay-right']}`}>
               {isRegister ? (
-                <>
-                  <h1 className={styles.title}>Start Now!</h1>
-                  <p>Register now to join our community</p>
-                  <Button
-                    className={styles.ghost}
-                    onClick={() => {
-                      setIsRegister(false); // Cambiar al formulario de login
-                    }}
-                    id="login"
-                  >
-                    Login
-                  </Button>
-                </>
+                  <>
+                    <h1 className={styles.title}>¿Ya tienes una cuenta?</h1>
+                    <p>Haz click aquí para iniciar sesión</p>
+                    <Button
+                        className={styles.ghost}
+                        onClick={() => {
+                          setIsRegister(false); // Cambiar al formulario de login
+                        }}
+                        id="login"
+                    >
+                      Iniciar Sesión
+                    </Button>
+                  </>
               ) : (
-                <>
-                  <h1 className={styles.title}>Start Now!</h1>
-                  <p>Register now to join our community</p>
-                  <Button className={styles.ghost} onClick={() => setIsRegister(true)} id="register">
-                    Register
-                  </Button>
-                </>
+                  <>
+                    <h1 className={styles.title}>¿Aun no tienes una cuenta?</h1>
+                    <p>Haz click aquí para registrarte</p>
+                    <Button className={styles.ghost} onClick={() => setIsRegister(true)} id="register">
+                      Registrarse
+                    </Button>
+                  </>
               )}
             </div>
           </div>
