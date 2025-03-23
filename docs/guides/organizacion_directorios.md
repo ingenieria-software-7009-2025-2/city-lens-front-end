@@ -90,11 +90,11 @@ Se crearon diversas carpetas con el objetivo de mejorar la legibilidad, organiza
 - **Descripción**: Contiene los componentes que representan las páginas de la aplicación. Cada página es un componente que puede utilizar otros componentes reutilizables.
 - **Organización**:
   - Cada página tiene su propia carpeta con su archivo .tsx y su archivo de estilos (si es necesario).
-  - Los nombres de las carpetas y archivos siguen la convención PascalCase (por ejemplo, `Login.tsx`, `Home.tsx`).
+  - Los nombres de las carpetas y archivos siguen la convención PascalCase (por ejemplo, `login.tsx`, `Home.tsx`).
 - **Estructura típica de un componente**:
   pages/
   ├── Login/
-  │ ├── Login.tsx // Página de Login
+  │ ├── login.tsx // Página de Login
   │ ├── Login.module.scss // Estilos específicos de la página de Login
   ├── Home/
   │ ├── Home.tsx // Página de inicio

@@ -1,6 +1,6 @@
 // components/ui/Form/Form.tsx
 import React from 'react';
-import styles from './Form.module.scss';
+import styles from './form.module.scss';
 
 interface FormProps {
   onSubmit: (e: React.FormEvent) => void; // Función que se ejecuta al enviar el formulario

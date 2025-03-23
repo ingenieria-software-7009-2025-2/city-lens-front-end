@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './assets/styles/app.scss';
-import { Login } from './pages/Login';
-import { Menu } from './pages/Menu/Menu';
+import { Login } from './pages/login';
+import { Menu } from './pages/menu';
 
 function App() {
     return (

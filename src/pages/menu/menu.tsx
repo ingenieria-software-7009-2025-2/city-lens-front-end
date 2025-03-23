@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Menu.module.scss';
-import { Button } from '../../components/UI';
+import styles from './menu.module.scss';
+import {Button} from './../../components/ui';
+
 export const Menu: React.FC = () => {
     return (
         <div className={styles.container}>
@@ -37,7 +38,7 @@ export const Menu: React.FC = () => {
                 {/* Right Section */}
                 <div className={styles.right}>
                     <img
-                        src="../..//assets/images/city2.jpg"
+                        src="../../assets/images/city2.jpg"
                         alt="Placeholder"
                         className={styles.image}
                     />
