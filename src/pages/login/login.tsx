@@ -89,7 +89,7 @@ export const Login: React.FC = () => {
                   <h1 className={styles.title}>Start Now!</h1>
                   <p>Register now to join our community</p>
                   <Button
-                    className={styles.ghost}
+                    variant="secondary"
                     onClick={() => {
                       setIsRegister(false); // Cambiar al formulario de login
                     }}
@@ -102,7 +102,7 @@ export const Login: React.FC = () => {
                 <>
                   <h1 className={styles.title}>Start Now!</h1>
                   <p>Register now to join our community</p>
-                  <Button className={styles.ghost} onClick={() => setIsRegister(true)} id="register">
+                  <Button variant="secondary" onClick={() => setIsRegister(true)} id="register">
                     Register
                   </Button>
                 </>

@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './menu.module.scss';
 import {Button} from './../../components/ui';
-
+import {Nav } from '../../components/Layout/Nav/nav';
 export const Menu: React.FC = () => {
     return (
         <div className={styles.container}>
+            <Nav></Nav>
             {/* Header */}
             <div className={styles.header}>
                 <div className={styles.logo}>SeeClickFix</div>
