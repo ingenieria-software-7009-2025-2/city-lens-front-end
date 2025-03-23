@@ -1,133 +1,4 @@
-h1 {
-  font-weight: 700;
-  letter-spacing: -1.5px;
-  margin: 0;
-  margin-bottom: 15px;
-}
-
-h1.title {
-  font-size: 45px;
-  line-height: 45px;
-  margin: 0;
-  text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
-}
-
-p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
-  text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
-}
-span {
-  font-size: 14px;
-  margin-top: 25px;
-}
-a {
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-  margin: 15px 0;
-  transition: 0.3s ease-in-out;
-}
-a:hover {
-  color: #4bb6b7;
-}
-
-.content {
-  display: flex;
-  width: 100%;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-
-  input {
-    font-size: 14px;
-    user-select: none;
-    padding-left: 5px;
-  }
-
-  .checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .input {
-    accent-color: #333;
-    width: 12px;
-    height: 12px;
-  }
-
-  label {
-    font-size: 14px;
-    user-select: none;
-  }
-}
-
-button {
-  position: relative;
-  border-radius: 20px;
-  border: 1px solid #4bb6b7;
-  background-color: #4bb6b7;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 2px 10px ;
-  transition: letter-spacing 0.3s ease-in-out, transform 0.1s;
-
-  &:hover {
-    letter-spacing: 3px;
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &.ghost {
-    background-color: rgba(225, 225, 225, 0.2);
-    border: 2px solid #fff;
-    color: #fff;
-
-    i {
-      &.register {
-        right: 40px;
-        opacity: 1;
-      }
-
-      &.login {
-        left: 40px;
-        opacity: 1;
-      }
-    }
-  }
-}
-
-form {
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-}
-
-input {
-  background-color: #eee;
-  border-radius: 10px;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 100%;
-}
-
+// Contenedor principal para el formulario de login y registro
 .container {
   background-color: #fff;
   border-radius: 25px;
@@ -152,6 +23,7 @@ input {
   }
 }
 
+// Contenedor de los formularios de login o registro
 .form-container {
   position: absolute;
   top: 0;
@@ -169,6 +41,7 @@ input {
   z-index: 1;
 }
 
+// Animación para mostrar el formulario de registro
 @keyframes show {
   0%, 49.99% {
     opacity: 0;
@@ -180,6 +53,8 @@ input {
   }
 }
 
+
+// Contenedor de la superposición de la interfaz
 .overlay-container {
   position: absolute;
   top: 0;
@@ -195,8 +70,10 @@ input {
   }
 }
 
+
+// Superposición con fondo de imagen y estilo de transición
 .overlay {
-  background-image: url("../../assets//images//overlay.jpeg");
+  background-image: url("../../assets//images//city_map.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -253,22 +130,3 @@ input {
   }
 }
 
-.social-container {
-  margin: 20px 0;
-
-  a {
-    border: 1px solid #dddddd;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-    transition: 0.3s ease-in-out;
-
-    &:hover {
-      border: 1px solid #4bb6b7;
-    }
-  }
-}

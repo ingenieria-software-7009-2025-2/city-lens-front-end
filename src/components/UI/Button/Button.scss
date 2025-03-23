@@ -1,12 +1,11 @@
-// Button.module.scss
-.button {
+button {
 	position: relative;
 	border-radius: 20px;
-	border: 1px solid #4bb6b7;
-	background-color: #4bb6b7;
 	color: #fff;
 	font-size: 15px;
 	font-weight: 600;
+	padding: 2px 10px;
+	transition: letter-spacing 0.3s ease-in-out, transform 0.1s;
   
 	&:hover {
 	  letter-spacing: 3px;
@@ -20,7 +19,13 @@
 	  outline: none;
 	}
   
-	&.ghost {
+	&.primary {
+	  background-color: #4bb6b7;
+	  border: 1px solid #4bb6b7;
+	  color: #fff;
+	}
+  
+	&.secondary {
 	  background-color: rgba(225, 225, 225, 0.2);
 	  border: 2px solid #fff;
 	  color: #fff;

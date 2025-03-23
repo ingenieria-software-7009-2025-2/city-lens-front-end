@@ -2,26 +2,11 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
 }
 
 * {
@@ -30,53 +15,52 @@ a:hover {
 
 body {
   width: 100vw;
-  display: flex;
-  background-color: #f6f5f7;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  overflow: hidden;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background-color: #f6f5f7;
+  overflow: hidden;
 }
 
 h1 {
   font-weight: 700;
   letter-spacing: -1.5px;
-  margin: 0 0 15px 0;
-
-  &.title {
-    font-size: 45px;
-    line-height: 45px;
-    text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
-  }
+  margin: 0;
+  margin-bottom: 15px;
 }
 
-p, span, a {
-  font-size: 14px;
+h1.title {
+  font-size: 45px;
+  line-height: 45px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
 }
 
 p {
+  font-size: 14px;
   font-weight: 100;
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
   text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
 }
-
 span {
+  font-size: 14px;
   margin-top: 25px;
 }
-
 a {
   color: #333;
+  font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
   transition: 0.3s ease-in-out;
+}
+a:hover {
+  color: #4bb6b7;
+}
 
-  &:hover {
-    color: #4bb6b7;
-  }
+span {
+  margin-top: 25px;
 }
