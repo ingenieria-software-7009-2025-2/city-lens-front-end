@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Form } from '../../components/UI/Form/Form';
-import { Button } from '../../components/UI/Button/Button';
-import { Input } from '../../components/UI/Input/Input';
-import { Label } from '../../components/UI/Label/Label';
+import { Form } from '../../components/UI/Form/form';
+import { Button } from '../../components/UI/Button/button';
+import { Input } from '../../components/UI/Input/input';
+import { Label } from '../../components/UI/Label/label';
 import styles from './Login.module.scss';
 import { login, register } from '../../api/services/auth';
 import { useNavigate } from 'react-router-dom'; // Para redirigir al usuario
