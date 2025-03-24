@@ -1,15 +1,30 @@
+import { useState } from "react";
 import "./nav.scss";
-
+import userIMG from "../../../assets/images/user2.png"
+import logo from "../../../assets/images/Logo.png"
 const Nav = () => {
-  return (
+  const [menuOpen, setMenuOpen] = useState(false);  return (
     <nav className="nav">
-      <div className="nav__logo">CityLens</div>
+      <a href="">
+      <div className="nav__logo">
+        <img src={logo} alt="logo" /><span>CityLens</span>
+        </div>
+        </a>
       <ul className="nav__list">
         <li className="nav__item"><a href="#">Inicio</a></li>
-        <li className="nav__item"><a href="#">Servicios</a></li>
-        <li className="nav__item"><a href="#">Nosotros</a></li>
-        <li className="nav__item"><a href="#">Contacto</a></li>
+        <li className="nav__item"><a href="#">Reportes</a></li>
+        <li className="nav__item"><a href="#">Mis reportes</a></li>
+        <li className="nav__item"><a href="#">Mapa</a></li>
       </ul>
+      <div className="user" onClick={() => setMenuOpen(!menuOpen)}>
+        <img src={userIMG} alt="Usuario" />
+        <div className={`user-menu ${menuOpen ? "active" : ""}`}>
+          <a href="#">Editar información</a>
+          <a href="#">Cerrar sesión</a>
+        </div>
+      </div>
+
+        
     </nav>
   );
 };

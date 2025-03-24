@@ -1,31 +1,21 @@
 import React from 'react';
 import styles from './menu.module.scss';
 import {Button} from './../../components/ui';
-import {Nav } from '../../components/Layout/Nav/nav';
+import { Nav } from '../../components/Layout/Nav/nav';
+import img from "../../assets/images/city_map.png"
 export const Menu: React.FC = () => {
     return (
         <div className={styles.container}>
-            <Nav></Nav>
             {/* Header */}
-            <div className={styles.header}>
-                <div className={styles.logo}>SeeClickFix</div>
-                <div className={styles.buttons}>
-                    <Button className={styles.button}>Resident Sign Up</Button>
-                    <Button className={styles.button}>Administrator Sign Up</Button>
-                </div>
-            </div>
-
+            <Nav></Nav>
             {/* Content */}
             <div className={styles.content}>
                 {/* Left Section */}
                 <div className={styles.left}>
                     <div className={styles.textBox}>
-                        <h2>Create an Account</h2>
+                        <h2>City Lens</h2>
                         <p>
-                            SeeClickFix 311CRM by CivicPlus is a 311 solution that empowers residents to report issues,
-                            identify repair needs, share feedback, and ask questions of their local government leaders.
-                            For local governments, it powers efficient and transparent workflows, fostering accountability
-                            and trust.
+                        CityLens es una plataforma integral de gestión de incidentes urbanos que permite a los residentes reportar problemas como baches, alumbrado público defectuoso, calles en mal estado y más. A través de CityLens, los ciudadanos pueden identificar necesidades de reparación, compartir comentarios y comunicarse directamente con las autoridades locales. 
                         </p>
                     </div>
                     <div className={styles.footerText}>
@@ -39,12 +29,14 @@ export const Menu: React.FC = () => {
                 {/* Right Section */}
                 <div className={styles.right}>
                     <img
-                        src="../../assets/images/city2.jpg"
+                        src={img}
                         alt="Placeholder"
                         className={styles.image}
                     />
                 </div>
             </div>
         </div>
+
+
     );
 };

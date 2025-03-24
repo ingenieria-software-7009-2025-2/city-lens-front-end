@@ -5,10 +5,11 @@ import { Menu } from './pages/menu';
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/menu" element={<Menu />} />
-        </Routes>
+           <Routes>
+               <Route path="/" element={<Login />} />
+               <Route path="/menu" element={<Menu />} />
+          </Routes>
+
     );
 }
 
