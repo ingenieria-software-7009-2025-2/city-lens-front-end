@@ -1,15 +1,25 @@
-import { Routes, Route } from 'react-router-dom';
-import './assets/styles/app.scss';
+import { Routes, Route } from 'react-router-dom';import './assets/styles/app.scss';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/others/ProtectedRoute/protectedroute';
+
 import { Login } from './pages/login';
 import { Menu } from './pages/menu';
 
 function App() {
     return (
-           <Routes>
-               <Route path="/" element={<Login />} />
-               <Route path="/menu" element={<Menu />} />
-          </Routes>
-
+        <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route 
+            path="/menu" 
+            element={
+              <ProtectedRoute>
+                <Menu />
+              </ProtectedRoute>
+            } 
+          />
+        </Routes>
+      </AuthProvider>
     );
 }
 

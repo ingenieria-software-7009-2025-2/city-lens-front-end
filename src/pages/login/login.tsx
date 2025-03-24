@@ -3,7 +3,8 @@ import {Button, Form, Input, Label} from './../../components/ui';
 import styles from './login.module.scss';
 import { login, register } from '../../api';
 import { useNavigate } from 'react-router-dom'; // Para redirigir al usuario
-
+import { AuthContext } from '../../context/AuthContext';
+import { useContext as useReactContext } from 'react';
 export const Login: React.FC = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ export const Login: React.FC = () => {
   const [lastName, setLastName] = useState('');
   const [error, setError] = useState<string | null>(null); // Estado para manejar errores
   const navigate = useNavigate(); // Hook para redirección
-
+  const { login: authLogin } = useContext(AuthContext);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null); // Limpiar errores anteriores
@@ -26,7 +27,8 @@ export const Login: React.FC = () => {
       } else {
         // Lógica de login
         const response = await login(email, password);
-        localStorage.setItem('token', response.token); // Guardar el token en localStorage
+        authLogin(response.token);
+        localStorage.setItem('token', response.token); 
         alert('login exitoso');
         navigate('/menu')
       }
@@ -114,3 +116,10 @@ export const Login: React.FC = () => {
 
   );
 };
+function useContext(AuthContext: React.Context<{ isAuthenticated: boolean; login: (token: string) => void; logout: () => void; }>) {
+  const context = useReactContext(AuthContext);
+  if (!context) {
+    throw new Error('useContext must be used within an AuthProvider');
+  }
+  return context;
+}
