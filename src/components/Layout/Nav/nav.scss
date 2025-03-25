@@ -1,0 +1,33 @@
+.nav {
+	background-color: green;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+	color: white;
+  
+	&__logo {
+	  font-size: 1.5rem;
+	  font-weight: bold;
+	}
+  
+	&__list {
+	  list-style: none;
+	  display: flex;
+	  gap: 20px;
+	  margin: 0;
+	  padding: 0;
+	}
+  
+	&__item a {
+	  text-decoration: none;
+	  color: white;
+	  font-weight: 500;
+	  transition: color 0.3s;
+  
+	  &:hover {
+		color: lightgray;
+	  }
+	}
+  }
+  

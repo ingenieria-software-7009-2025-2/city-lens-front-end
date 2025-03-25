@@ -22,9 +22,22 @@ node -v # Debe imprimir "v22.14.0".
 nvm current # Debe imprimir "v22.14.0".
 # Verify npm version:
 npm -v # Debe imprimir "10.9.2".
-npm install # Tomará la información de package-lock.json
+npm install # Tomará la información de package-lock.json y package.json para instalar las dependencias.
 npm run dev # Mostrará un mensaje en pantalla para el siguiente paso.
 ```
 
-Al final del tercer paso en terminal se verá una dirección en localhost a la que se puede acceder para mostrar el funcionamiento
+Al final del tercer paso en terminal se verá una dirección en localhost a la que se puede acceder para mostrar el
+funcionamiento
 del proyecto. Se espera que esta dirección sea `http://localhost:5173/`.
+
+## Documentación del Proyecto
+
+Para poder visualizar la interfaz de Storybook, se debe ejecutar el siguiente comando en la terminal:
+
+```bash
+npm run storybook
+```
+
+Esto mostrará una dirección en `localhost` a la que se puede acceder para mostrar el funcionamiento de los
+componentes creados en el proyecto e interactuar con ellos sin necesidad de hacer modificaciones directas al
+código del mismo. Se espera que esta dirección sea `http://localhost:6006/`.
