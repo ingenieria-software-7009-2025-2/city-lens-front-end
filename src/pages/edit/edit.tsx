@@ -1,10 +1,10 @@
-import React, { useState,useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import {Button, Form, Input, Label} from './../../components/ui';
-import styles from './login.module.scss';
+import styles from './edit.module.scss';
 import { login, register } from '../../api';
 import { useNavigate } from 'react-router-dom'; // Para redirigir al usuario
 import { AuthContext } from '../../context/AuthContext';
-export const Login: React.FC = () => {
+export const Edit: React.FC = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,8 +39,9 @@ export const Login: React.FC = () => {
 
   return (
       <div className={`${styles.container} ${isRegister ? styles['right-panel-active'] : ''}`} id="container">
-        {/* Formulario de Register */}
-        {isRegister && (
+		<h1>Editar informacion</h1>
+	    {/* Formulario de Register */}
+         
           <div className={`${styles['form-container']} ${styles['register-container']}`}>
             <Form onSubmit={handleSubmit}>
               <h1>Register here</h1>
@@ -63,55 +64,7 @@ export const Login: React.FC = () => {
               <Button type="submit">Register</Button>
             </Form>
           </div>
-        )}
 
-        {/* Formulario de login */}
-        {!isRegister && (
-          <div className={`${styles['form-container']} ${styles['login-container']}`}>
-            <Form onSubmit={handleSubmit}>
-              <h1>Login here</h1>
-              <Label htmlFor="email">Email:</Label>
-              <Input type="email" placeholder="Enter your email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <Label htmlFor="password">Password:</Label>
-              <Input type="password" placeholder="Enter your password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              {/* Mostrar error si existe */}
-              {error && <p className={styles.error}>{error}</p>}
-              <Button type="submit">Login</Button>
-            </Form>
-          </div>
-        )}
-
-        {/* Panel de Overlay */}
-        <div className={styles['overlay-container']}>
-          <div className={styles['overlay']}>
-            <div className={`${styles['overlay-panel']} ${isRegister ? styles['overlay-left'] : styles['overlay-right']}`}>
-              {isRegister ? (
-                <>
-                  <h1 className={styles.title}>Start Now!</h1>
-                  <p>Register now to join our community</p>
-                  <Button
-                    variant="secondary"
-                    onClick={() => {
-                      setIsRegister(false); // Cambiar al formulario de login
-                    }}
-                    id="login"
-                  >
-                    Login
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <h1 className={styles.title}>Start Now!</h1>
-                  <p>Register now to join our community</p>
-                  <Button variant="secondary" onClick={() => setIsRegister(true)} id="register">
-                    Register
-                  </Button>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-  );
-};
+    </div>
+	 );
+	};

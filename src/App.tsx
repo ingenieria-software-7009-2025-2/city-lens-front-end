@@ -4,22 +4,23 @@ import ProtectedRoute from './components/others/ProtectedRoute/protectedroute';
 
 import { Login } from './pages/login';
 import { Menu } from './pages/menu';
-
+import { Edit } from './pages/edit';
 function App() {
     return (
-        <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route 
-            path="/menu" 
-            element={
-              <ProtectedRoute>
-                <Menu />
-              </ProtectedRoute>
-            } 
-          />
-        </Routes>
-      </AuthProvider>
+      //   <AuthProvider>
+      //   <Routes>
+      //     <Route path="/" element={<Login />} />
+      //     <Route 
+      //       path="/menu" 
+      //       element={
+      //         <ProtectedRoute>
+      //           <Menu />
+      //         </ProtectedRoute>
+      //       } 
+      //     />
+      //   </Routes>
+      // </AuthProvider>
+<Edit></Edit>
     );
 }
 
