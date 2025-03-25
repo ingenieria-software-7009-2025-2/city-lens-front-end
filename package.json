@@ -9,10 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "generate-docs": "react-docgen src --out docs/components",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_0341a0c47109536"
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "axios": "^1.8.3",
@@ -49,8 +46,6 @@
     "globals": "^15.15.0",
     "playwright": "^1.51.1",
     "prettier": "^3.5.3",
-    "react-docgen": "^7.1.1",
-    "react-docgen-typescript": "^2.2.2",
     "storybook": "^8.6.8",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
