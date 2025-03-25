@@ -3,7 +3,7 @@
 City Lens es una WebApp de Reportes Urbanos. Este es el frontend de la aplicación.
 
 | Alumno                         | No. Cuenta | Nombre de Usuario |
-|:-------------------------------|:----------:|------------------:|
+| :----------------------------- | :--------: | ----------------: |
 | Edgar José Reyes Montelongo    | 319023275  |   EdgarMontelongo |
 | Ángel Moisés González Corrales | 320234619  |         MoisesAGC |
 | Israel Rivera                  | 320490747  |         Orbitalx1 |
@@ -11,11 +11,10 @@ City Lens es una WebApp de Reportes Urbanos. Este es el frontend de la aplicaci�
 
 ## Ejecución e Instalación
 
-1. Se necesita tener Node.js instalado. Para hacerlo se siguen los métodos
-   oficiales [descritos aquí](https://nodejs.org/es).
-   Se necesita en particular la versión 22.14.0 LTS integrada con npm.
-2. Se descarga el repositorio y se ingresa a la carpeta raíz.
-3. Se ejecutan los siguientes comandos en la terminal.
+1.  Se necesita tener Node.js instalado. Para hacerlo se siguen los métodos oficiales [descritos aqui](https://nodejs.org/es).
+    Se necesita en particular la versión 22.14.0 LTS integrada con npm.
+2.  Se descarga el repositorio y se ingresa a la carpeta raíz.
+3.  Se ejecutan los siguientes comandos en la terminal.
 
 ```bash
 # Verificar la versión de Node.js:
