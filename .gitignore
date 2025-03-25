@@ -23,4 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Storybook ignored
 *storybook.log
+/src/stories/*.css
+/src/stories/*.tsx
+/src/stories/*.ts
+/src/stories/assets
