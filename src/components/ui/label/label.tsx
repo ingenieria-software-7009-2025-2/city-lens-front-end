@@ -1,6 +1,13 @@
 import React from "react";
 import "./label.scss";
 
+/**
+ * Label Básico
+ * @param variant Variante del label. "primary" por default.
+ * @param children Contenido del label.
+ * @param htmlFor ID del elemento input asociado al label.
+ * @param className Clase CSS opcional para estilizar.
+ */
 interface LabelProps {
   variant?: "primary" | "secondary";
   children: React.ReactNode;
@@ -15,7 +22,10 @@ const Label: React.FC<LabelProps> = ({
   className,
 }) => {
   return (
-    <label className={`label ${variant} ${className || ''}`.trim()} htmlFor={htmlFor}>
+    <label
+      className={`label ${variant} ${className || ""}`.trim()}
+      htmlFor={htmlFor}
+    >
       {children}
     </label>
   );
