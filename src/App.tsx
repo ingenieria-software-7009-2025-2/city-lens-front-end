@@ -1,16 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets//images/react.svg'
-import viteLogo from './assets/images/vite.svg'
-import './assets/styles/app.scss'
-import { Login } from './pages/Login/Login';
-function App() {
-  const [count, setCount] = useState(0)
+import { Routes, Route } from "react-router-dom";
+import "./assets/styles/app.scss";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/others/ProtectedRoute/protectedroute";
 
+import { Login } from "./pages/login";
+import { Menu } from "./pages/menu";
+import { Edit } from "./pages/edit"; // Importa el componente Edit
+
+function App() {
   return (
-    <>
-      <Login></Login>
-    </>
-  )
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/menu"
+          element={
+            <ProtectedRoute>
+              <Menu />
+            </ProtectedRoute>
+          }
+        />
+        {/* Nueva ruta para la página de edición */}
+        <Route
+          path="/edit"
+          element={
+            <ProtectedRoute>
+              <Edit />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

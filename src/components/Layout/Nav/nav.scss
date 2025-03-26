@@ -1,0 +1,112 @@
+// Estilos para la barra de navegación
+.nav {
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+  color: white;
+  height: 70px;
+
+  // Logo de la aplicación, incluye una imagen y un texto
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 50px;
+      margin: 0 5px;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  // Lista de enlaces en la barra de navegación
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Estilos para los enlaces de la lista de navegación
+  &__item a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    transition: color 0.3s;
+    &:hover {
+      color: lightgray;
+    }
+  }
+}
+
+// Contenedor del usuario (ícono de perfil)
+.user {
+  position: relative; // Necesario para posicionar
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  a {
+    color: #4bb6b7;
+    width: 100%;
+    padding: 20px 0;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  a:hover {
+    color: #fff;
+    background-color: #4bb6b7;
+  }
+}
+// Menú desplegable con animación
+.user-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  a:first-child {
+    border-bottom: solid 1px #4bb6b7;
+  }
+}

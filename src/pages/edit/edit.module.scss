@@ -1,0 +1,72 @@
+// Contenedor principal para el formulario de login y registro
+.container {
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+
+  &.right-panel-active {
+    .login-container {
+      transform: translatex(100%);
+    }
+
+    .register-container {
+      transform: translateX(100%);
+      opacity: 1;
+      z-index: 5;
+      animation: show 0.6s;
+    }
+  }
+}
+
+// Contenedor de los formularios de login o registro
+.form-container {
+  position: absolute;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.login-container,
+.register-container {
+  width: 50%;
+}
+
+.register-container {
+  z-index: 1;
+}
+
+// Animación para mostrar el formulario de registro
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+// Contenedor de la superposición de la interfaz
+.overlay-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 10;
+
+  .container.right-panel-active & {
+    transform: translate(-100%);
+  }
+}
