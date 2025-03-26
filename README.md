@@ -11,10 +11,11 @@ City Lens es una WebApp de Reportes Urbanos. Este es el frontend de la aplicaci�
 
 ## Ejecución e Instalación
 
-1.  Se necesita tener Node.js instalado. Para hacerlo se siguen los métodos oficiales [descritos aqui](https://nodejs.org/es).
-    Se necesita en particular la versión 22.14.0 LTS integrada con npm.
-2.  Se descarga el repositorio y se ingresa a la carpeta raíz.
-3.  Se ejecutan los siguientes comandos en la terminal.
+1. Se necesita tener Node.js instalado. Para hacerlo se siguen los métodos
+   oficiales [descritos aquí](https://nodejs.org/es).
+   Se necesita en particular la versión 22.14.0 LTS integrada con npm.
+2. Se descarga el repositorio y se ingresa a la carpeta raíz.
+3. Se ejecutan los siguientes comandos en la terminal.
 
 ```bash
 # Verificar la versión de Node.js:
@@ -40,4 +41,4 @@ npm run storybook
 
 Esto mostrará una dirección en `localhost` a la que se puede acceder para mostrar el funcionamiento de los
 componentes creados en el proyecto e interactuar con ellos sin necesidad de hacer modificaciones directas al
-código del mismo. Se espera que esta dirección sea `http://localhost:6006/`.
+código del mismo. Se espera que esta dirección sea `http://localhost:6006/` pero podría variar.

@@ -1,66 +1,78 @@
-import {Meta} from "@storybook/blocks";
+import { Meta } from "@storybook/blocks";
 
 import Github from "./assets/github.svg";
 import Tutorials from "./assets/tutorials.svg";
 
-export const RightArrow = () => <svg
+export const RightArrow = () => (
+  <svg
     viewBox="0 0 14 14"
     width="8px"
     height="14px"
     style={{
-        marginLeft: '4px',
-        display: 'inline-block',
-        shapeRendering: 'inherit',
-        verticalAlign: 'middle',
-        fill: 'currentColor',
-        'path fill': 'currentColor'
+      marginLeft: "4px",
+      display: "inline-block",
+      shapeRendering: "inherit",
+      verticalAlign: "middle",
+      fill: "currentColor",
+      "path fill": "currentColor",
     }}
->
-    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z"/>
-</svg>
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+);
 
 . <Meta title="Info. Express" />
 
 <div>
-    <p>
-        <strong>City Lens</strong> es una aplicación web que permite a los usuarios visualizar información sobre
-        incidentes urbanos en la Ciudad de México.
-    </p>
+  <p>
+    <strong>City Lens</strong> es una aplicación web que permite a los usuarios
+    visualizar información sobre incidentes urbanos en la Ciudad de México.
+  </p>
 </div>
 
 <div className="sb-section sb-socials">
-    <div className="sb-section-item">
-        <img src={Github} alt="Github logo" className="sb-explore-image"/>
-        ¿Tienes dudas o problemas con el proyecto?
-        <a
-            href="https://github.com/ingenieria-software-7009-2025-2/city-lens-front-end"
-            target="_blank"
-        >¡Visita nuestro repositorio en GitHub! <RightArrow/></a>
-    </div>
-    <div className="sb-section-item">
-        <img src={Tutorials} alt="A book" className="sb-explore-image"/>
-        <p>¿Tienes dudas de como funciona Storybook?.</p>
-        <a
-            href="https://storybook.js.org/tutorials/"
-            target="_blank"
-        >Lee más de la librería aquí<RightArrow/></a>
-    </div>
+  <div className="sb-section-item">
+    <img src={Github} alt="Github logo" className="sb-explore-image" />
+    ¿Tienes dudas o problemas con el proyecto?
+    <a
+      href="https://github.com/ingenieria-software-7009-2025-2/city-lens-front-end"
+      target="_blank"
+    >
+      ¡Visita nuestro repositorio en GitHub! <RightArrow />
+    </a>
+  </div>
+  <div className="sb-section-item">
+    <img src={Tutorials} alt="A book" className="sb-explore-image" />
+    <p>¿Tienes dudas de como funciona Storybook?.</p>
+    <a href="https://storybook.js.org/tutorials/" target="_blank">
+      Lee más de la librería aquí
+      <RightArrow />
+    </a>
+  </div>
 </div>
 
 <div>
-  <p><cite>This was a triumph.</cite></p>
-  <p><cite>I'm making a note here:</cite></p>
-    <p><cite>HUGE SUCCESS!</cite></p>
+  <p>
+    <cite>This was a triumph.</cite>
+  </p>
+  <p>
+    <cite>I'm making a note here:</cite>
+  </p>
+  <p>
+    <cite>HUGE SUCCESS!</cite>
+  </p>
 </div>
 
 <div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Aperture_Science_Logo.svg"
-         width={75}
-         alt="City Lens"/>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/8/87/Aperture_Science_Logo.svg"
+    width={75}
+    alt="City Lens"
+  />
 </div>
 
 <style>
-    {`
+  {`
   .sb-container {
     margin-bottom: 48px;
   }
