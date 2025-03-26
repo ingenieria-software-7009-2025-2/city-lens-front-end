@@ -19,6 +19,7 @@ export const Edit: React.FC = () => {
         try {
           if (!token) {
             setError('No se encontró un token de autenticación.');
+            navigate('/'); // Redirige al login si no hay token
             return;
           }
   
@@ -33,7 +34,7 @@ export const Edit: React.FC = () => {
       };
   
       fetchUserData();
-    }, [token]);
+    }, [token, navigate]);
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       setError(null);
@@ -61,20 +62,28 @@ export const Edit: React.FC = () => {
          
           <div className={`${styles['form-container']} ${styles['register-container']}`}>
             <Form onSubmit={handleSubmit}>
-		<h1>Editar informacion</h1>
-              <Label htmlFor="name">Name:</Label>
-              <Input type="text" placeholder={name} id="name" onChange={(e) => setName(e.target.value)} />
-              <Label htmlFor="lastName">Last Name:</Label>
+              <h1>Editar información</h1>
+              <Label htmlFor="name">Nombre:</Label>
               <Input
                 type="text"
-                placeholder={lastName}
+                id="name"
+                value={name} 
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Label htmlFor="lastName">Apellido:</Label>
+              <Input
+                type="text"
                 id="lastName"
-                value={lastName}
+                value={lastName} 
                 onChange={(e) => setLastName(e.target.value)}
               />
-              <Label htmlFor="email">Email:</Label>
-              <Input type="email" placeholder={email} id="registerEmail" onChange={(e) => setEmail(e.target.value)} />
-              {/* Mostrar error si existe */}
+              <Label htmlFor="email">Correo electrónico:</Label>
+              <Input
+                type="email"
+                id="email"
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+              />
               {error && <p className={styles.error}>{error}</p>}
               <Button type="submit">Actualizar</Button>
             </Form>
