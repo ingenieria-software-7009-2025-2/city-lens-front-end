@@ -28,16 +28,29 @@ const Nav = () => {
         </div>
       </a>
       <ul className="nav__list">
-        <li className="nav__item"><a href="#">Inicio</a></li>
-        <li className="nav__item"><a href="#">Reportes</a></li>
-        <li className="nav__item"><a href="#">Mis reportes</a></li>
-        <li className="nav__item"><a href="#">Mapa</a></li>
+        <li className="nav__item">
+          <a href="#">Inicio</a>
+        </li>
+        <li className="nav__item">
+          <a href="#">Reportes</a>
+        </li>
+        <li className="nav__item">
+          <a href="#">Mis reportes</a>
+        </li>
+        <li className="nav__item">
+          <a href="#">Mapa</a>
+        </li>
       </ul>
       <div className="user" onClick={() => setMenuOpen(!menuOpen)}>
         <img src={userIMG} alt="Usuario" />
         <div className={`user-menu ${menuOpen ? "active" : ""}`}>
-          <a href="#" onClick={handleEditInfo}>Editar información</a> {/* Botón para editar */}
-          <a href="#" onClick={handleLogout}>Cerrar sesión</a>
+          <a href="#" onClick={handleEditInfo}>
+            Editar información
+          </a>{" "}
+          {/* Botón para editar */}
+          <a href="#" onClick={handleLogout}>
+            Cerrar sesión
+          </a>
         </div>
       </div>
     </nav>
@@ -46,5 +59,3 @@ const Nav = () => {
 
 export default Nav;
 export { Nav };
-
-
