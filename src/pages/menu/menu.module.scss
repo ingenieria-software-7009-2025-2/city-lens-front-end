@@ -1,84 +1,83 @@
+
 .container {
-  font-family: "Calibri", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+    font-family: 'Calibri', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100%;
+}
+.content {
+    font-family: 'Calibri', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+height: 80%;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
 }
 
 .buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0056b3;
-  }
+    display: flex;
+    gap: 10px;
 }
 
 .content {
-  display: flex;
-  padding: 20px;
-  gap: 20px;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
 }
 
 .left {
-  flex: 1;
+    flex: 1;
 }
 
 .right {
-  flex: 1;
-  text-align: center;
+    flex: 1;
+    text-align: center;
 }
 
 .image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .textBox {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-  h2 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #333;
-  }
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+        color: #333;
+    }
 
-  p {
-    font-size: 16px;
-    color: #666;
-  }
+    p {
+        font-size: 16px;
+        color: #666;
+    }
 }
 
 .footerText {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #888;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #888;
 }
