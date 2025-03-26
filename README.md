@@ -31,6 +31,8 @@ Al final del tercer paso en terminal se verá una dirección en localhost a la q
 funcionamiento
 del proyecto. Se espera que esta dirección sea `http://localhost:5173/`.
 
+Para unir el backend, se siguen las instrucciones de [este repositorio](https://github.com/ingenieria-software-7009-2025-2/city-lens-api)
+
 ## Documentación del Proyecto
 
 Para poder visualizar la interfaz de Storybook, se debe ejecutar el siguiente comando en la terminal:
