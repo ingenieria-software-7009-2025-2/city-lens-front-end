@@ -1,25 +1,30 @@
-import { useState, useContext } from "react"; // Asegúrate de importar useContext correctamente
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./nav.scss";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext"; 
+import { AuthContext } from "../../../context/AuthContext";
 import userIMG from "../../../assets/images/user2.png";
 import logo from "../../../assets/images/Logo.png";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { logout } = useContext(AuthContext); // Usa useContext correctamente
-  const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate(); // Inicializa useNavigate
 
   const handleLogout = () => {
-    logout(); 
-    navigate("/login"); 
+    logout();
+    navigate("/login");
+  };
+
+  const handleEditInfo = () => {
+    navigate("/edit"); // Navega a la página de edición
   };
 
   return (
     <nav className="nav">
       <a href="">
         <div className="nav__logo">
-          <img src={logo} alt="logo" /><span>CityLens</span>
+          <img src={logo} alt="logo" />
+          <span>CityLens</span>
         </div>
       </a>
       <ul className="nav__list">
@@ -31,7 +36,7 @@ const Nav = () => {
       <div className="user" onClick={() => setMenuOpen(!menuOpen)}>
         <img src={userIMG} alt="Usuario" />
         <div className={`user-menu ${menuOpen ? "active" : ""}`}>
-          <a href="#">Editar información</a>
+          <a href="#" onClick={handleEditInfo}>Editar información</a> {/* Botón para editar */}
           <a href="#" onClick={handleLogout}>Cerrar sesión</a>
         </div>
       </div>

@@ -1,9 +1,10 @@
-import React, { useState,useContext} from 'react';
-import {Button, Form, Input, Label} from './../../components/ui';
+import React, { useState, useContext, useEffect } from 'react';
+import { Button, Form, Input, Label } from './../../components/ui';
 import styles from './login.module.scss';
 import { login, register } from '../../api';
 import { useNavigate } from 'react-router-dom'; // Para redirigir al usuario
 import { AuthContext } from '../../context/AuthContext';
+
 export const Login: React.FC = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState('');
@@ -13,9 +14,29 @@ export const Login: React.FC = () => {
   const [error, setError] = useState<string | null>(null); // Estado para manejar errores
   const navigate = useNavigate(); // Hook para redirección
   const { login: authLogin } = useContext(AuthContext);
+
+  // Limpia los campos al montar el componente
+  useEffect(() => {
+    setEmail('');
+    setPassword('');
+  }, []);
+
+  // Redirige al menú si el token aún existe
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      navigate('/menu');
+    }
+  }, [navigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Limpiar errores anteriores
+    setError(null);
+
+    // Validar que los campos no estén vacíos
+    if (!email || !password) {
+      setError('Por favor, completa todos los campos.');
+      return;
+    }
 
     try {
       if (isRegister) {
@@ -26,10 +47,9 @@ export const Login: React.FC = () => {
       } else {
         // Lógica de login
         const response = await login(email, password);
-        authLogin(response.token);
-        localStorage.setItem('token', response.token); 
-        alert('login exitoso');
-        navigate('/menu')
+        authLogin(response.token); // Guarda el token en el contexto
+        alert('Inicio de sesión exitoso.');
+        navigate('/menu'); // Redirige al menú
       }
     } catch (error) {
       setError('Error en el proceso. Por favor, inténtalo de nuevo.'); // Mostrar mensaje de error
