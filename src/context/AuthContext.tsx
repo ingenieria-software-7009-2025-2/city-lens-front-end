@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { ReactNode } from 'react';
-import { login as loginService, logout as logoutService, register as registerService } from '../api/services/auth'; // Importa las funciones del servicio
-import { RegisterData } from '../api/models/auth'; // Importa la interfaz RegisterData
+import { login as loginService, logout as logoutService, register as registerService, getUserInfo as fetchUserInfo, updateUserInfo as updateUserService } from '../api/services/auth'; // Importa las funciones del servicio
+import { RegisterData, UserUpdateData, LoginResponse } from '../api/models/auth'; // Importa las interfaces
 
 export const AuthContext = createContext<{
   isAuthenticated: boolean;
@@ -9,12 +9,20 @@ export const AuthContext = createContext<{
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   register: (data: RegisterData) => Promise<void>;
+  getUserInfo: () => Promise<LoginResponse['user']>;
+  updateUserInfo: (userChanges: UserUpdateData) => Promise<LoginResponse['user']>;
 }>({
   isAuthenticated: false,
   token: null,
   login: async () => {},
   logout: () => {},
   register: async () => {},
+  getUserInfo: async () => {
+    throw new Error('getUserInfo no está implementado.');
+  },
+  updateUserInfo: async () => {
+    throw new Error('updateUserInfo no está implementado.');
+  },
 });
 
 interface AuthProviderProps {
@@ -33,6 +41,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, []);
 
+
   const register = async (data: RegisterData) => {
     try {
       await registerService(data); // Llama a la función register del servicio
@@ -43,7 +52,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  
   const login = async (email: string, password: string) => {
     const response = await loginService(email, password);
     localStorage.setItem('token', response.token);
@@ -61,9 +69,30 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const getUserInfo = async (): Promise<LoginResponse['user']> => {
+    try {
+      const userInfo = await fetchUserInfo(); // Llama a la función getUserInfo del servicio
+      console.log('Información del usuario obtenida:', userInfo);
+      return userInfo;
+    } catch (error) {
+      console.error('Error al obtener la información del usuario:', error);
+      throw error;
+    }
+  };
+
+  const updateUserInfo = async (userChanges: UserUpdateData): Promise<LoginResponse['user']> => {
+    try {
+      const updatedUser = await updateUserService(userChanges); // Llama a la función updateUserInfo del servicio
+      console.log('Información del usuario actualizada:', updatedUser);
+      return updatedUser;
+    } catch (error) {
+      console.error('Error al actualizar la información del usuario:', error);
+      throw error;
+    }
+  };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, token, login, logout, register }}>
+    <AuthContext.Provider value={{ isAuthenticated, token, login, logout, register, getUserInfo, updateUserInfo }}>
       {children}
     </AuthContext.Provider>
   );
