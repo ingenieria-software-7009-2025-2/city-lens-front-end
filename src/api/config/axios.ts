@@ -14,7 +14,6 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = token; // Agrega el prefijo "Bearer"
   }
-  console.log(config);
   return config;
 });
 

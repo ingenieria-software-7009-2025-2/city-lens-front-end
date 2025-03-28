@@ -23,10 +23,10 @@ export const Edit: React.FC = () => {
             return;
           }
   
-          const userData = await getUserInfo(token); // Llama a la API para obtener los datos del usuario
-          setName(userData.first_name || '');
-          setLastName(userData.last_name || '');
-          setEmail(userData.email || '');
+          // const userData = await getUserInfo(token); // Llama a la API para obtener los datos del usuario
+          // setName(userData.first_name || '');
+          // setLastName(userData.last_name || '');
+          // setEmail(userData.email || '');
         } catch (error) {
           setError('Error al cargar los datos del usuario.');
           console.error('Error:', error);
@@ -46,7 +46,7 @@ export const Edit: React.FC = () => {
         }
   
         // Actualizar la información del usuario
-        await updateUserInfo(token, { first_name: name, last_name: lastName, email });
+        // await updateUserInfo(token, { first_name: name, last_name: lastName, email });
         alert('Información actualizada correctamente.');
         navigate('/menu'); // Redirigir después de la actualización
       } catch (error) {
