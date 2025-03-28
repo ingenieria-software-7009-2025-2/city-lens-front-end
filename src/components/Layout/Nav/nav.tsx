@@ -8,10 +8,10 @@ import logo from "../../../assets/images/Logo.png";
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useContext(AuthContext);
-  const navigate = useNavigate(); // Inicializa useNavigate
-
+  const navigate = useNavigate(); 
   const handleLogout = () => {
     logout();
+    localStorage.removeItem("token"); // Elimina el token del localStorage
     navigate("/login");
   };
 
