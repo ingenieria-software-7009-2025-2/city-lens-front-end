@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { logout as logoutService } from '../api/services/auth'; // Importa la función logout del servicio
 
 export const AuthContext = createContext<{
   isAuthenticated: boolean;
@@ -14,7 +14,6 @@ export const AuthContext = createContext<{
   logout: () => {},
 });
 
-
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -22,10 +21,9 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
       setToken(token);
@@ -33,20 +31,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = (token: string) => {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('token', token);
     setIsAuthenticated(true);
     setToken(token);
   };
 
-  const logout = () => {
-    localStorage.removeItem('authToken');
-    setIsAuthenticated(false);
-    setToken(null);
-  };
-
-  const handleLogout = () => {
-    logout(); // Llama a la función logout del contexto
-    navigate("/login"); // Redirige al login
+  const logout = async (token:string) => {
+    console.log("Token " + token + " logged out");
+    try {
+      await logoutService(); // Llama a la función logout del servicio
+      setIsAuthenticated(false);
+      setToken(null);
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
   };
 
   return (

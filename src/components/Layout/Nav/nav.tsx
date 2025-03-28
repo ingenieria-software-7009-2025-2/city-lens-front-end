@@ -8,9 +8,10 @@ import logo from "../../../assets/images/Logo.png";
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useContext(AuthContext);
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate(); 
 
   const handleLogout = () => {
+    console.log("Cerrando sesión...");
     logout();
     navigate("/login");
   };

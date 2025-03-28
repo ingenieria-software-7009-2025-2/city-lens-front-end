@@ -23,7 +23,7 @@ export const Login: React.FC = () => {
 
   // Redirige al menú si el token aún existe
   useEffect(() => {
-    if (localStorage.getItem('authToken')) {
+    if (localStorage.getItem('token')) {
       navigate('/menu');
     }
   }, [navigate]);

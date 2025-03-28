@@ -1,17 +1,19 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './assets/styles/app.scss';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/others/ProtectedRoute/protectedroute';
 
 import { Login } from './pages/login';
 import { Menu } from './pages/menu';
-import { Edit } from './pages/edit'; // Importa el componente Edit
+import { Edit } from './pages/edit';
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
+        {/* Redirige de "/" a "/login" */}
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
         <Route 
           path="/menu" 
           element={
@@ -20,7 +22,6 @@ function App() {
             </ProtectedRoute>
           } 
         />
-        {/* Nueva ruta para la página de edición */}
         <Route 
           path="/edit" 
           element={
