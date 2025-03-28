@@ -9,10 +9,9 @@ const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate(); 
-
   const handleLogout = () => {
-    console.log("Cerrando sesión...");
     logout();
+    localStorage.removeItem("token"); // Elimina el token del localStorage
     navigate("/login");
   };
 

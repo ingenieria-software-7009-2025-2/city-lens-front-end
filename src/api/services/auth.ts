@@ -65,7 +65,7 @@ export const updateUserInfo = async (token: string, data: UpdateUserData): Promi
 // Nueva función: Cerrar sesión del usuario autenticado
 export const logout = async (): Promise<void> => {
   const token = localStorage.getItem('token'); // Obtén el token del localStorage
-console.log("HOla auth");
+console.log("HOla auth token: " + token);
   if (!token) {
     throw new Error('No se encontró un token de autenticación.');
   }

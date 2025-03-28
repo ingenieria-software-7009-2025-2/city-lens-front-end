@@ -36,8 +36,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setToken(token);
   };
 
-  const logout = async (token:string) => {
-    console.log("Token " + token + " logged out");
+  const logout = async () => {
+    console.log('logout');
     try {
       await logoutService(); // Llama a la función logout del servicio
       setIsAuthenticated(false);

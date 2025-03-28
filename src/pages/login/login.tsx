@@ -22,11 +22,11 @@ export const Login: React.FC = () => {
   }, []);
 
   // Redirige al menú si el token aún existe
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      navigate('/menu');
-    }
-  }, [navigate]);
+   useEffect(() => {
+     if (localStorage.getItem('token')) {
+       navigate('/menu');
+     }
+   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ export const Login: React.FC = () => {
       } else {
         // Lógica de login
         const response = await login(email, password);
-        authLogin(response.token); // Guarda el token en el contexto
+        authLogin(response.token); // Guarda el  token en el contexto
         alert('Inicio de sesión exitoso.');
         navigate('/menu'); // Redirige al menú
       }
