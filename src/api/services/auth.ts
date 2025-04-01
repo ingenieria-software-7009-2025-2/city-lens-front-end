@@ -73,9 +73,13 @@ export const updateUserInfo = async (userChanges: UserUpdateData): Promise<Login
   if (!token) {
     throw new Error('No se encontró un token de autenticación.');
   }
-
+  const payload = {
+    first_name: userChanges.firstName, // <-- Transformamos la clave
+    last_name: userChanges.lastName,   // <-- Transformamos la clave
+    email: userChanges.email,
+  };
   try {
-    const response = await api.put('/v1/users/me', userChanges, {
+    const response = await api.put('/v1/users/me', payload, {
       headers: {
         Authorization: token, // Envía el token directamente
       },

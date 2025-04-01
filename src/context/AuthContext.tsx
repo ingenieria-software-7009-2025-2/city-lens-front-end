@@ -84,12 +84,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const updatedUser = await updateUserService(userChanges); // Llama a la función updateUserInfo del servicio
       console.log('Información del usuario actualizada:', updatedUser);
+      console.log("Enviando datos:", userChanges);
+
       return updatedUser;
     } catch (error) {
       console.error('Error al actualizar la información del usuario:', error);
       throw error;
     }
-  };
+  };  
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, token, login, logout, register, getUserInfo, updateUserInfo }}>

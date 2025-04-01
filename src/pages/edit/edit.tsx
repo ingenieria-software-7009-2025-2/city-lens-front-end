@@ -36,7 +36,8 @@ export const Edit: React.FC = () => {
 
     try {
       // Actualizar la información del usuario
-      await updateUserInfo({ firstName: name, lastName, email });
+      await updateUserInfo({ firstName: name, lastName:lastName, email:email });
+      
       alert('Información actualizada correctamente.');
       navigate('/menu'); // Redirigir después de la actualización
     } catch (error) {
