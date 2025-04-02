@@ -5,6 +5,8 @@
     padding: 0;
     background-color: #f4f4f4;
     height: 100%;
+    width: 80%;
+    margin-left: auto;
 }
 .content {
     font-family: 'Calibri', sans-serif;
@@ -22,7 +24,7 @@ height: 80%;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #ffffff;
+    background-color: var(--white);
     border-bottom: 1px solid #ddd;
 }
 

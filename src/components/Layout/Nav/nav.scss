@@ -6,13 +6,20 @@
 	justify-content: space-between;
 	padding: 10px 50px;
 	color: white;
-	height: 70px;
-  
+	position: fixed;
+	top: 0;
+	left: 0;
+	color: #fff;
+	width: 15vw;
+	height: 100vh;
+
+
 	// Logo de la aplicación, incluye una imagen y un texto
 	&__logo {
 	  font-size: 1.5rem;
 	  font-weight: bold;
 	  display: flex;
+	  flex-direction: column;
 	  align-items: center;
   
 	  img {
@@ -82,8 +89,6 @@
 	// Menú desplegable con animación
 	.user-menu {
 		position: absolute;
-		top: 50px;
-		right: 0;
 		background: white;
 		border: 1px solid #ddd;
 		border-radius: 8px;
@@ -93,15 +98,17 @@
 		flex-direction: column;
 		justify-content: center;
 		width: 200px;
-		height: 200px;
+
 		opacity: 0;
-		transform: translateY(-10px);
+		transform: translateX(-50%);
 		pointer-events: none;
 		transition: opacity 0.3s ease, transform 0.3s ease;
+		bottom: 20px; 
+		left: 15vw; // Centra el menú horizontalmente respecto al contenedor
 	  
 		&.active {
 		  opacity: 1;
-		  transform: translateY(0);
+
 		  pointer-events: auto;
 		}
 

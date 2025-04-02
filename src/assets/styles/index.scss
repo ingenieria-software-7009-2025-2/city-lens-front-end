@@ -1,3 +1,5 @@
+@import 'colors';
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -20,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #f6f5f7;
+  background-color: var(--body-color);
   overflow: hidden;
 }
 
@@ -35,7 +37,7 @@ h1.title {
   font-size: 45px;
   line-height: 45px;
   margin: 0;
-  text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
+  text-shadow: 0 0 10px var(--dark-blue);
 }
 
 p {
@@ -44,7 +46,7 @@ p {
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
-  text-shadow: 0 0 10px rgba(16, 64, 74, 0.5);
+  text-shadow: 0 0 10px var(--dark-blue);
 }
 span {
 
@@ -58,6 +60,6 @@ a {
   transition: 0.3s ease-in-out;
 }
 a:hover {
-  color: #4bb6b7;
+  color: var(--metro-green);
 }
 
