@@ -4,7 +4,6 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #242424;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,8 +20,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
   flex-direction: column;
-  background-color: var(--body-color);
+  background-color: var(--white);
   overflow: hidden;
 }
 

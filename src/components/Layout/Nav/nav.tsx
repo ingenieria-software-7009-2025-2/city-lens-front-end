@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./nav.scss";
 import { AuthContext } from "../../../context/AuthContext";
 import userIMG from "../../../assets/images/user2.png";
-import logo from "../../../assets/images/Logo.png";
+
+import logo from "../../../assets/images/Logo2.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse,faPencil,faFileAlt, faMap,faUser} from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,13 +31,13 @@ const Nav = () => {
         </div>
       </a>
       <ul className="nav__list">
-        <li className="nav__item"><a href="#">Inicio</a></li>
-        <li className="nav__item"><a href="#">Reportes</a></li>
-        <li className="nav__item"><a href="#">Mis reportes</a></li>
-        <li className="nav__item"><a href="#">Mapa</a></li>
+        <li className="nav__item"><a href="#"> <FontAwesomeIcon icon={faHouse} />Inicio</a></li>
+        <li className="nav__item"><a href="#"> <FontAwesomeIcon icon={faPencil} /> Reportes</a></li>
+        <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faFileAlt} />Mis reportes</a></li>
+        <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faMap} />Mapa</a></li>
       </ul>
       <div className="user" onClick={() => setMenuOpen(!menuOpen)}>
-        <img src={userIMG} alt="Usuario" />
+      <FontAwesomeIcon icon={faUser} />
         <div className={`user-menu ${menuOpen ? "active" : ""}`}>
           <a href="#" onClick={handleEditInfo}>Editar información</a> {/* Botón para editar */}
           <a href="#" onClick={handleLogout}>Cerrar sesión</a>

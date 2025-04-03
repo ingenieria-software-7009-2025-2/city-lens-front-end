@@ -1,17 +1,17 @@
 // Estilos para la barra de navegación
 .nav {
-	background-color: green;
+	background-color: var(--metro-light-turquoise);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px 50px;
-	color: white;
+	color: var(--nature-dark-gray);
 	position: fixed;
 	top: 0;
 	left: 0;
-	color: #fff;
 	width: 15vw;
 	height: 100vh;
+	flex-direction: column;
 
 
 	// Logo de la aplicación, incluye una imagen y un texto
@@ -19,9 +19,11 @@
 	  font-size: 1.5rem;
 	  font-weight: bold;
 	  display: flex;
-	  flex-direction: column;
 	  align-items: center;
-  
+	  padding: 10px;
+	  position: relative;
+	  border-radius: 20px;
+	
 	  img {
 		width: 50px;
 		margin: 0 5px;
@@ -31,43 +33,76 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		color: var(--nature-dark-gray);
 	  }
+	}
+	&__logo:hover{
+		background-color: var(--metro-green);
+		
+		span {
+			color: #fff;
+			
+		  }
 	}
   
 	// Lista de enlaces en la barra de navegación
 	&__list {
 	  list-style: none;
 	  display: flex;
-	  gap: 100px;
 	  margin: 0;
 	  padding: 0;
+flex-direction: column;
+height: 50vh;
+position: absolute;
+top: 15vh;
+
+transition: all 0.1s
 	}
   
 	// Estilos para los enlaces de la lista de navegación
 	&__item a {
-	  text-decoration: none;
-	  color: white;
-	  font-weight: 500;
-	  font-size: 20px;
-	  transition: color 0.3s;
-	  &:hover {
-		color: lightgray;
-	  }
+		display: flex;
+		justify-content: center;
+		gap: 10px; // Espacio entre ícono y texto
+		text-decoration: none;
+		color: var(--nature-dark-gray);
+		font-weight: 500;
+		font-size: 18px;
+		border-radius: 20px;
+		transition: color 0.3s;
+		padding: 20px 15px;
+
+		svg {
+			font-size: 20px;
+			color: inherit;
+			transition: color 0.3s;
+			margin-top: 1px;
+		}
+
+		&:hover {
+			background-color: var(--metro-green);
+			color: var(--white);
+
+			svg {
+				color: var(--white);
+			}
+		}
 	}
-  }
-  
+}
   // Contenedor del usuario (ícono de perfil)
 .user {
 	position: relative; // Necesario para posicionar 
 	cursor: pointer;
+	bottom: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 40px;
-	height: 40px;
+	border-radius: 20px;
+	padding: 20px 40px;
   
-	img {
+	svg {
 	  width: 100%;
+	  font-size: 30px;
 	  border-radius: 50%;
 	}
 	a{
@@ -85,6 +120,10 @@
 		background-color: #4bb6b7;
 
 	}
+}
+.user:hover{
+	background-color: var(--metro-green);
+	color: #fff;
 }
 	// Menú desplegable con animación
 	.user-menu {
@@ -118,4 +157,4 @@
 		
 		
 	  }
-	  
+	
