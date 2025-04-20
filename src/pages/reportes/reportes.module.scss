@@ -1,0 +1,23 @@
+.container {
+		font-family: 'Calibri', sans-serif;
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		width: 85%;
+		margin-left: auto;
+		display: flex;
+		flex-direction: column;
+		 // Color de fondo opcional
+	  
+}
+.reportContainer {
+	margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  width: 80vw;
+  padding: 20px;
+  border-radius: 20px;
+  height: 100%;
+}

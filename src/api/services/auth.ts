@@ -3,6 +3,9 @@ import { LoginResponse, RegisterData ,UserUpdateData} from '../models/auth'; // 
 
 //todo LOGIN
 export const login = async (email: string, password: string): Promise<LoginResponse> => {
+  // Limpiar el localStorage antes de iniciar sesión
+  localStorage.clear();
+
   const response = await api.post('/v1/users/login', { email, password });
   const { token } = response.data;
 
@@ -37,7 +40,7 @@ export const logout = async (): Promise<void> => {
     });
 
     // Elimina el token del localStorage después de cerrar sesión
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
     console.log('Sesión cerrada correctamente.');
   } catch (error) {
     console.error('Error al cerrar sesión:', error);

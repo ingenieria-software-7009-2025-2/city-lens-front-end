@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./nav.scss";
 import { AuthContext } from "../../../context/AuthContext";
-import userIMG from "../../../assets/images/user2.png";
 
 import logo from "../../../assets/images/Logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +11,7 @@ const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate(); 
+
   const handleLogout = () => {
     logout();
     localStorage.removeItem("token"); // Elimina el token del localStorage
@@ -20,6 +20,14 @@ const Nav = () => {
 
   const handleEditInfo = () => {
     navigate("/edit"); // Navega a la página de edición
+  };
+
+  const handleReportInfo = () => {
+    navigate("/reportes"); // Navega a la página de edición
+  };
+
+  const handleGoToMenu = () => {
+    navigate("/menu"); // Navega al menú
   };
 
   return (
@@ -31,8 +39,8 @@ const Nav = () => {
         </div>
       </a>
       <ul className="nav__list">
-        <li className="nav__item"><a href="#"> <FontAwesomeIcon icon={faHouse} />Inicio</a></li>
-        <li className="nav__item"><a href="#"> <FontAwesomeIcon icon={faPencil} /> Reportes</a></li>
+        <li className="nav__item"><a href="#" onClick={handleGoToMenu}> <FontAwesomeIcon icon={faHouse} />Inicio</a></li>
+        <li className="nav__item"><a href="#" onClick={handleReportInfo}> <FontAwesomeIcon icon={faPencil}/> Reportes</a></li>
         <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faFileAlt} />Mis reportes</a></li>
         <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faMap} />Mapa</a></li>
       </ul>

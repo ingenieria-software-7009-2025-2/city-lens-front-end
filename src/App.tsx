@@ -6,6 +6,7 @@ import ProtectedRoute from './components/others/ProtectedRoute/protectedroute';
 import { Login } from './pages/login';
 import { Menu } from './pages/menu';
 import { Edit } from './pages/edit';
+import { Reportes } from './pages/reportes';
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Edit />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/reportes" 
+          element={
+            <ProtectedRoute>
+              <Reportes />
             </ProtectedRoute>
           } 
         />
