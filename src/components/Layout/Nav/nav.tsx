@@ -30,6 +30,10 @@ const Nav = () => {
     navigate("/menu"); // Navega al menú
   };
 
+  const handleGoToMenu = () => {
+    navigate("/menu"); // Navega al menú
+  };
+
   return (
     <nav className="nav">
       <a href="">
@@ -40,8 +44,8 @@ const Nav = () => {
       </a>
       <ul className="nav__list">
         <li className="nav__item"><a href="#" onClick={handleGoToMenu}> <FontAwesomeIcon icon={faHouse} />Inicio</a></li>
-        <li className="nav__item"><a href="#" onClick={handleReportInfo}> <FontAwesomeIcon icon={faPencil}/> Reportes</a></li>
-        <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faFileAlt} />Mis reportes</a></li>
+        <li className="nav__item"><a href="#" > <FontAwesomeIcon icon={faPencil}/>Crear reporte</a></li>
+        <li className="nav__item"><a href="#"onClick={handleReportInfo}><FontAwesomeIcon icon={faFileAlt} />Reportes</a></li>
         <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faMap} />Mapa</a></li>
       </ul>
       <div className="user" onClick={() => setMenuOpen(!menuOpen)}>
