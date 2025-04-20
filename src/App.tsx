@@ -7,6 +7,7 @@ import { Login } from './pages/login';
 import { Menu } from './pages/menu';
 import { Edit } from './pages/edit';
 import { Reportes } from './pages/reportes';
+import { CreateReport } from './pages/createReport'; // Importa la página CreateReport
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Reportes />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/create-report" 
+          element={
+            <ProtectedRoute>
+              <CreateReport />
             </ProtectedRoute>
           } 
         />

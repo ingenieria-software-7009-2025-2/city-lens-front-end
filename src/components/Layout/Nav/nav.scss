@@ -1,11 +1,11 @@
 // Estilos para la barra de navegación
 .nav {
-	background-color: var(--metro-light-turquoise);
+	background-color: var(--color1);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px 50px;
-	color: var(--nature-dark-gray);
+	color: var(--white);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -37,7 +37,7 @@
 	  }
 	}
 	&__logo:hover{
-		background-color: var(--metro-green);
+		background-color: var(--color3);
 		
 		span {
 			color: #fff;
@@ -80,7 +80,7 @@ transition: all 0.1s
 		}
 
 		&:hover {
-			background-color: var(--metro-green);
+			background-color: var(--color3);
 			color: var(--white);
 
 			svg {

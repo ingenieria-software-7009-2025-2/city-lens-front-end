@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form, Input, Label } from './../../components/ui';
 import styles from './createReport.module.scss';
 
@@ -17,7 +17,6 @@ export const CreateReport: React.FC = () => {
     setError(null);
 
     try {
-      // Aquí se enviaría la información del reporte al backend
       const reportData = {
         title,
         description,
@@ -45,6 +44,28 @@ export const CreateReport: React.FC = () => {
     }
   };
 
+  const handleGetCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude.toString());
+          setLongitude(position.coords.longitude.toString());
+        },
+        (error) => {
+          console.error('Error al obtener la ubicación:', error);
+          setError('No se pudo obtener la ubicación actual.');
+        }
+      );
+    } else {
+      setError('La geolocalización no está soportada por este navegador.');
+    }
+  };
+
+  // Obtener la ubicación automáticamente al cargar el componente
+  useEffect(() => {
+    handleGetCurrentLocation();
+  }, []);
+
   return (
     <div className={styles.container} id="container">
       <div className={`${styles['form-container']} ${styles['register-container']}`}>
@@ -55,6 +76,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="title"
             value={title}
+            placeholder="Ej: Bache en la calle principal"
             onChange={(e) => setTitle(e.target.value)}
           />
           <Label htmlFor="description">Descripción:</Label>
@@ -62,6 +84,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="description"
             value={description}
+            placeholder="Ej: Un bache grande que dificulta el tránsito"
             onChange={(e) => setDescription(e.target.value)}
           />
           <Label htmlFor="latitude">Latitud:</Label>
@@ -69,6 +92,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="latitude"
             value={latitude}
+            placeholder="Ej: 19.432608"
             onChange={(e) => setLatitude(e.target.value)}
           />
           <Label htmlFor="longitude">Longitud:</Label>
@@ -76,6 +100,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="longitude"
             value={longitude}
+            placeholder="Ej: -99.133209"
             onChange={(e) => setLongitude(e.target.value)}
           />
           <Label htmlFor="address">Dirección:</Label>
@@ -83,6 +108,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="address"
             value={address}
+            placeholder="Ej: Calle Reforma #123, Ciudad de México"
             onChange={(e) => setAddress(e.target.value)}
           />
           <Label htmlFor="postalCode">Código Postal:</Label>
@@ -90,6 +116,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="postalCode"
             value={postalCode}
+            placeholder="Ej: 01000"
             onChange={(e) => setPostalCode(e.target.value)}
           />
           <Label htmlFor="municipality">Municipio:</Label>
@@ -97,6 +124,7 @@ export const CreateReport: React.FC = () => {
             type="text"
             id="municipality"
             value={municipality}
+            placeholder="Ej: Cuauhtémoc"
             onChange={(e) => setMunicipality(e.target.value)}
           />
           {error && <p className={styles.error}>{error}</p>}

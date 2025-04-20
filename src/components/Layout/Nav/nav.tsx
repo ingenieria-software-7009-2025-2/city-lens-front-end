@@ -5,12 +5,12 @@ import { AuthContext } from "../../../context/AuthContext";
 
 import logo from "../../../assets/images/Logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse,faPencil,faFileAlt, faMap,faUser} from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faPencil, faFileAlt, faMap, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logout } = useContext(AuthContext);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
@@ -23,15 +23,15 @@ const Nav = () => {
   };
 
   const handleReportInfo = () => {
-    navigate("/reportes"); // Navega a la página de edición
+    navigate("/reportes"); // Navega a la página de reportes
   };
 
   const handleGoToMenu = () => {
     navigate("/menu"); // Navega al menú
   };
 
-  const handleGoToMenu = () => {
-    navigate("/menu"); // Navega al menú
+  const handleCreateReport = () => {
+    navigate("/create-report"); // Navega a la página de creación de reportes
   };
 
   return (
@@ -43,16 +43,40 @@ const Nav = () => {
         </div>
       </a>
       <ul className="nav__list">
-        <li className="nav__item"><a href="#" onClick={handleGoToMenu}> <FontAwesomeIcon icon={faHouse} />Inicio</a></li>
-        <li className="nav__item"><a href="#" > <FontAwesomeIcon icon={faPencil}/>Crear reporte</a></li>
-        <li className="nav__item"><a href="#"onClick={handleReportInfo}><FontAwesomeIcon icon={faFileAlt} />Reportes</a></li>
-        <li className="nav__item"><a href="#"><FontAwesomeIcon icon={faMap} />Mapa</a></li>
+        <li className="nav__item">
+          <a href="#" onClick={handleGoToMenu}>
+            <FontAwesomeIcon icon={faHouse} />
+            Inicio
+          </a>
+        </li>
+        <li className="nav__item">
+          <a href="#" onClick={handleCreateReport}>
+            <FontAwesomeIcon icon={faPencil} />
+            Crear reporte
+          </a>
+        </li>
+        <li className="nav__item">
+          <a href="#" onClick={handleReportInfo}>
+            <FontAwesomeIcon icon={faFileAlt} />
+            Reportes
+          </a>
+        </li>
+        <li className="nav__item">
+          <a href="#">
+            <FontAwesomeIcon icon={faMap} />
+            Mapa
+          </a>
+        </li>
       </ul>
       <div className="user" onClick={() => setMenuOpen(!menuOpen)}>
-      <FontAwesomeIcon icon={faUser} />
+        <FontAwesomeIcon icon={faUser} />
         <div className={`user-menu ${menuOpen ? "active" : ""}`}>
-          <a href="#" onClick={handleEditInfo}>Editar información</a> {/* Botón para editar */}
-          <a href="#" onClick={handleLogout}>Cerrar sesión</a>
+          <a href="#" onClick={handleEditInfo}>
+            Editar información
+          </a>
+          <a href="#" onClick={handleLogout}>
+            Cerrar sesión
+          </a>
         </div>
       </div>
     </nav>
