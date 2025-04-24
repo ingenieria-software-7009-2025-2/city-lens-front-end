@@ -1,69 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './reportes.module.scss';
 import { Nav } from '../../components/Layout/Nav/nav';
-interface Report {
-  id: string; // UUID del reporte
-  photo?: string; // URL de la foto del incidente
-  title: string; // Título del reporte
-  description: string; // Descripción del incidente
-  status: string; // Estado del reporte
-  locationId: string; // UUID de la ubicación asociada
-  creationDate: string; // Fecha de creación del reporte
-}
-
-const mockReports: Report[] = [
-  {
-    id: '1',
-    photo:'https://example.com/photo1.jpg',
-    title: 'Reporte 1',
-    description: 'Descripción del incidente 1',
-    status: 'Active',
-    locationId: '123',
-    creationDate: '2025-04-19T10:00:00',
-  },
-  {
-    id: '2',
-    title: 'Reporte 2',
-    description: 'Descripción del incidente 2',
-    status: 'Inactive',
-    locationId: '456',
-    creationDate: '2025-04-18T15:30:00',
-  },
-];
+import { getLatestReports } from '../../services/../api/services/report';
+import { ReportOutputBody } from '../../api/models/report';
 
 export const Reportes: React.FC = () => {
+  const [reports, setReports] = useState<ReportOutputBody[]>([]);
+
+  useEffect(() => {
+    const fetchReports = async () => {
+      try {
+        const data = await getLatestReports();
+        setReports(data);
+      } catch (err) {
+        console.error('Error al cargar reportes:', err);
+      }
+    };
+
+    fetchReports();
+  }, []);
+
   return (
     <div className={styles.container}>
-      <Nav></Nav>
+      <Nav />
       <div className={styles.reportContainer}>
-
-      <h1>Lista de Reportes</h1>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Photo</th>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Estado</th>
-            <th>ID de Ubicación</th>
-            <th>Fecha de Creación</th>
-          </tr>
-        </thead>
-        <tbody>
-          {mockReports.map((report) => (
-            <tr key={report.id}>
-              <td>{report.id}</td>
-              <td>{report.title}</td>
-              <td>{report.description}</td>
-              <td>{report.status}</td>
-              <td>{report.locationId}</td>
-              <td>{new Date(report.creationDate).toLocaleString()}</td>
+        <h1>Lista de Reportes</h1>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Foto</th>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Estado</th>
+              <th>Ubicación</th>
+              <th>Creado</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-          </div>
+          </thead>
+          <tbody>
+            {reports.map((report,index) => (
+              <tr key={report.id}>
+                <td>{index+1}</td>
+                <td>
+                  {/* {report.imageId ? (
+                    <img
+                      src={`http://localhost:8080/v1/image/${report.imageId}`}
+                      alt="Reporte"
+                      width={50}
+                      height={50}
+                      style={{ objectFit: 'cover', borderRadius: '6px' }}
+                    />
+                  ) : (
+                    'Sin imagen'
+                  )} */}
+                  
+                </td>
+                <td>{report.title}</td>
+                <td>{report.description}</td>
+                <td>{report.status}</td>
+                <td>{`${report.location.latitude}, ${report.location.longitude}`}</td>
+                <td>{new Date(report.creationDate).toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

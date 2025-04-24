@@ -10,7 +10,7 @@ export const CreateReport: React.FC = () => {
   const [description, setDescription] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  const [address, setAddress] = useState('');
+  const [direction, setdirection] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [municipality, setMunicipality] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -25,6 +25,7 @@ export const CreateReport: React.FC = () => {
         description,
         latitude: parseFloat(latitude),
         longitude: parseFloat(longitude),
+        direction,
         municipality,
         zipcode: postalCode,
       };
@@ -37,7 +38,7 @@ export const CreateReport: React.FC = () => {
       setDescription('');
       setLatitude('');
       setLongitude('');
-      setAddress('');
+      setdirection('');
       setPostalCode('');
       setMunicipality('');
     } catch (error) {
@@ -105,13 +106,13 @@ export const CreateReport: React.FC = () => {
             placeholder="Ej: -99.133209"
             onChange={(e) => setLongitude(e.target.value)}
           />
-          <Label htmlFor="address">Dirección:</Label>
+          <Label htmlFor="adress">Dirección:</Label>
           <Input
             type="text"
-            id="address"
-            value={address}
+            id="adress"
+            value={direction}
             placeholder="Ej: Calle Reforma #123, Ciudad de México"
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => setdirection(e.target.value)}
           />
           <Label htmlFor="postalCode">Código Postal:</Label>
           <Input

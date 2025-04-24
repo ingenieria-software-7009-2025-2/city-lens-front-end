@@ -1,17 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './menu.module.scss';
 import cityMap from '../../assets/images/city_map.png';
 import { Nav } from '../../components/Layout/Nav/nav';
-import { AuthContext } from '../../context/AuthContext';
+import { getUserInfo as fetchUserInfo } from '../../api/services/auth'; // Importar la función directamente
 
 export const Menu: React.FC = () => {
-    const { getUserInfo } = useContext(AuthContext);
+
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
         const fetchUserName = async () => {
             try {
-                const userInfo = await getUserInfo();
+                console.log("Llamando a fetchUserInfo directamente...");
+                const userInfo = await fetchUserInfo();
+                console.log("UserInfo recibido:", userInfo);
                 setUserName(userInfo.firstName || '');
             } catch (error) {
                 console.error('Error al obtener el nombre del usuario:', error);
@@ -19,12 +21,12 @@ export const Menu: React.FC = () => {
         };
 
         fetchUserName();
-    }, [getUserInfo]);
+    }, []);
 
     return (
         <div className={styles.container}>
             {/* Header */}
-            <Nav></Nav>
+            <Nav />
 
             {/* Grid Content */}
             <div className={styles.gridContainer}>
@@ -36,9 +38,7 @@ export const Menu: React.FC = () => {
                 <div className={styles.div6}>Div 6 </div>
                 <div className={styles.div14}><img src={cityMap} alt="City Map" /></div>
                 <div className={styles.div15}>15</div>
-
             </div>
         </div>
     );
 };
-

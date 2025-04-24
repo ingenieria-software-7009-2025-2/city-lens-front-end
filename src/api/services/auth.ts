@@ -51,16 +51,13 @@ export const logout = async (): Promise<void> => {
 //todo GET USER
 export const getUserInfo = async (): Promise<LoginResponse['user']> => {
   const token = localStorage.getItem('token'); // Obtén el token del localStorage
+  console.log("TOken get user:" + token);
   if (!token) {
     throw new Error('No se encontró un token de autenticación.');
   }
 
   try {
-    const response = await api.get('/v1/users/me', {
-      headers: {
-        Authorization: token, // Envía el token directamente
-      },
-    });
+    const response = await api.get('/v1/users/me');
 
     console.log('Datos del usuario obtenidos:', response.data);
     return response.data; // Devuelve los datos del usuario

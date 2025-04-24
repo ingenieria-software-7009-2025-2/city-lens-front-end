@@ -1,5 +1,5 @@
 import api from '../config/axios'; // Importar la instancia de Axios configurada
-import { ReportCreateData, ReportUpdateData, ReportDeleteData } from '../models/report'; // Importar las interfaces necesarias
+import { ReportCreateData, ReportUpdateData, ReportDeleteData,ReportOutputBody } from '../models/report'; // Importar las interfaces necesarias
 
 /**
  * Crear un reporte
@@ -8,7 +8,16 @@ import { ReportCreateData, ReportUpdateData, ReportDeleteData } from '../models/
  */
 export const createReport = async (data: ReportCreateData): Promise<any> => {
   try {
-    const response = await api.post('/v1/report/create', data);
+    const response = await api.post('/v1/report/create', {
+      title: data.title, 
+      description: data.description,
+      latitude: data.latitude, 
+      longitude: data.longitude, 
+      direction: data.direction, 
+      zipcode: data.zipcode, 
+      municipality: data.municipality, 
+      imageURL: "https://example.com/image.jpg", 
+    });
     console.log('Reporte creado:', response.data);
     return response.data;
   } catch (error: any) {
@@ -60,6 +69,17 @@ export const testReportEndpoint = async (): Promise<string> => {
     return response.data;
   } catch (error: any) {
     console.error('Error al acceder al endpoint de prueba:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+export const getLatestReports = async (): Promise<ReportOutputBody[]> => {
+  try {
+    const response = await api.get('/v1/list/latest');
+    console.log('Reportes obtenidos:', response.data);
+    return response.data;
+  } catch (error: any) {
+    console.error('Error al obtener reportes:', error.response?.data || error.message);
     throw error;
   }
 };

@@ -17,7 +17,6 @@ api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token'); // Obtén el token del localStorage
   if (token) {
     config.headers.Authorization = token; 
-    config.headers['Access-Control-Allow-Origin'] = '*';
   }
   return config;
 });
