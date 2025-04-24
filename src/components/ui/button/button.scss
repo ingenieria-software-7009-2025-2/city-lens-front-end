@@ -1,7 +1,7 @@
 button {
   position: relative;
   border-radius: 20px;
-  color: var(--white);  font-size: 15px;
+  color: var(--color2);  font-size: 15px;
   font-weight: 600;
   padding: 2px 10px;
   transition:
@@ -21,14 +21,14 @@ button {
   }
 
   &.primary {
-    background-color: var(--urban-deep-blue);
-    border: 1px solid var(--urban-deep-blue);
-    color: var(--white);
+    background-color: var(--color8);
+    border: 1px solid var(--color8);
+    color: var(--color2);
   }
 
   &.secondary {
     background-color: rgba(225, 225, 225, 0.2);
-    border: 2px solid var(--white);
-    color: var(--white);
+    border: 2px solid var(--color2);
+    color: var(--color2);
   }
 }

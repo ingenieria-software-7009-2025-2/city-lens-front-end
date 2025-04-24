@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./nav.scss";
 import { AuthContext } from "../../../context/AuthContext";
 
-import logo from "../../../assets/images/Logo2.png";
+import logo from "../../../assets/images/Logo.png";
+import logo2 from "../../../assets/images/Logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faPencil, faFileAlt, faMap, faUser } from "@fortawesome/free-solid-svg-icons";
 
@@ -36,9 +37,9 @@ const Nav = () => {
 
   return (
     <nav className="nav">
-      <a href="">
+      <a href="" className="nav__logo-link">
         <div className="nav__logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" className="nav__logo-img" />
           <span>CityLens</span>
         </div>
       </a>

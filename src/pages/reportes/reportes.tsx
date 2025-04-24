@@ -3,6 +3,7 @@ import styles from './reportes.module.scss';
 import { Nav } from '../../components/Layout/Nav/nav';
 interface Report {
   id: string; // UUID del reporte
+  photo?: string; // URL de la foto del incidente
   title: string; // Título del reporte
   description: string; // Descripción del incidente
   status: string; // Estado del reporte
@@ -13,9 +14,10 @@ interface Report {
 const mockReports: Report[] = [
   {
     id: '1',
+    photo:'https://example.com/photo1.jpg',
     title: 'Reporte 1',
     description: 'Descripción del incidente 1',
-    status: 'Abierto',
+    status: 'Active',
     locationId: '123',
     creationDate: '2025-04-19T10:00:00',
   },
@@ -23,7 +25,7 @@ const mockReports: Report[] = [
     id: '2',
     title: 'Reporte 2',
     description: 'Descripción del incidente 2',
-    status: 'Cerrado',
+    status: 'Inactive',
     locationId: '456',
     creationDate: '2025-04-18T15:30:00',
   },
@@ -40,6 +42,7 @@ export const Reportes: React.FC = () => {
         <thead>
           <tr>
             <th>ID</th>
+            <th>Photo</th>
             <th>Título</th>
             <th>Descripción</th>
             <th>Estado</th>

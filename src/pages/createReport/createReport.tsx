@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Form, Input, Label } from './../../components/ui';
 import styles from './createReport.module.scss';
+import Nav from '../../components/Layout/Nav/nav';
+import { ReportContext } from '../../context/ReportContext';
 
 export const CreateReport: React.FC = () => {
+  const { createReport } = useContext(ReportContext); // Usar el contexto
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [latitude, setLatitude] = useState('');
@@ -20,14 +23,13 @@ export const CreateReport: React.FC = () => {
       const reportData = {
         title,
         description,
-        latitude,
-        longitude,
-        address,
-        postalCode,
+        latitude: parseFloat(latitude),
+        longitude: parseFloat(longitude),
         municipality,
+        zipcode: postalCode,
       };
 
-      console.log('Reporte creado:', reportData);
+      await createReport(reportData); // Llama a la función del contexto
       alert('Reporte creado correctamente.');
 
       // Limpiar el formulario
@@ -61,13 +63,13 @@ export const CreateReport: React.FC = () => {
     }
   };
 
-  // Obtener la ubicación automáticamente al cargar el componente
   useEffect(() => {
     handleGetCurrentLocation();
   }, []);
 
   return (
     <div className={styles.container} id="container">
+      <Nav></Nav>
       <div className={`${styles['form-container']} ${styles['register-container']}`}>
         <Form onSubmit={handleSubmit}>
           <h1>Crear Reporte</h1>

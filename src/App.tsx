@@ -8,10 +8,13 @@ import { Menu } from './pages/menu';
 import { Edit } from './pages/edit';
 import { Reportes } from './pages/reportes';
 import { CreateReport } from './pages/createReport'; // Importa la página CreateReport
+import { ReportProvider } from './context/ReportContext';
 
 function App() {
   return (
     <AuthProvider>
+    <ReportProvider>
+
       <Routes>
         {/* Redirige de "/" a "/login" */}
         <Route path="/" element={<Navigate to="/login" />} />
@@ -49,6 +52,8 @@ function App() {
           } 
         />
       </Routes>
+
+    </ReportProvider>
     </AuthProvider>
   );
 }

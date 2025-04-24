@@ -1,16 +1,19 @@
 // Estilos para la barra de navegación
 .nav {
-	background-color: var(--color1);
+	background-color: var(--color35); // Actualizado
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 10px 50px;
-	color: var(--white);
+	padding: 30px 15px 10px 10px;
+	color: var(--color2); // Actualizado
 	position: fixed;
-	top: 0;
-	left: 0;
+
+	left: 10px;
+	top:25px;
+	bottom: 10px;
 	width: 15vw;
-	height: 100vh;
+	height: 95vh;
+	border-radius: 20px;
 	flex-direction: column;
 
 
@@ -22,7 +25,7 @@
 	  align-items: center;
 	  padding: 10px;
 	  position: relative;
-	  border-radius: 20px;
+	  border-radius: 60px;
 	
 	  img {
 		width: 50px;
@@ -33,16 +36,24 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: var(--nature-dark-gray);
+		color: var(--color2); // Actualizado
 	  }
 	}
 	&__logo:hover{
-		background-color: var(--color3);
+		background-color: var(--color37); // Actualizado
 		
 		span {
-			color: #fff;
+			color: var(--color16); // Actualizado
 			
 		  }
+	}
+
+	&__logo-link {
+	  text-decoration: none;
+
+	  &:hover .nav__logo-img {
+		content: url('../../../assets/images/Logo2.png'); // Cambia la imagen al hacer hover
+	  }
 	}
   
 	// Lista de enlaces en la barra de navegación
@@ -65,10 +76,11 @@ transition: all 0.1s
 		justify-content: center;
 		gap: 10px; // Espacio entre ícono y texto
 		text-decoration: none;
-		color: var(--nature-dark-gray);
-		font-weight: 500;
-		font-size: 18px;
-		border-radius: 20px;
+		color: var(--color2); // Actualizado
+		font-weight:800;
+		font-size: 20px;
+
+		border-radius: 40px;
 		transition: color 0.3s;
 		padding: 20px 15px;
 
@@ -76,29 +88,30 @@ transition: all 0.1s
 			font-size: 20px;
 			color: inherit;
 			transition: color 0.3s;
-			margin-top: 1px;
+			margin-top: 2px;
 		}
 
 		&:hover {
-			background-color: var(--color3);
-			color: var(--white);
+			background-color: var(--color37); // Actualizado
+			color: var(--color35); // Actualizado
 
 			svg {
-				color: var(--white);
+				color: var(--color35);
 			}
 		}
 	}
 }
   // Contenedor del usuario (ícono de perfil)
 .user {
+	background-color: var(--color35); // Actualizado
 	position: relative; // Necesario para posicionar 
 	cursor: pointer;
 	bottom: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 20px;
-	padding: 20px 40px;
+	border-radius: 40px;
+	padding: 30px 50px;
   
 	svg {
 	  width: 100%;
@@ -106,7 +119,7 @@ transition: all 0.1s
 	  border-radius: 50%;
 	}
 	a{
-		color: #4bb6b7;
+		color: var(--color35);
 		width: 100%;
 		padding: 20px 0;
 		height: 100%;
@@ -116,14 +129,14 @@ transition: all 0.1s
 		justify-content: center;
 	}
 	a:hover{
-		color: #fff;
-		background-color: #4bb6b7;
+		color: var(--color35);
+		background-color: var(--color37);
 
 	}
 }
 .user:hover{
-	background-color: var(--metro-green);
-	color: #fff;
+	background-color: var(--color37); // Actualizado
+	color: var(--color16); // Actualizado
 }
 	// Menú desplegable con animación
 	.user-menu {
@@ -152,9 +165,8 @@ transition: all 0.1s
 		}
 
 		a:first-child{
-			border-bottom: solid 1px #4bb6b7;
+			border-bottom: solid 1px var(--color37);
 		}
 		
 		
 	  }
-	

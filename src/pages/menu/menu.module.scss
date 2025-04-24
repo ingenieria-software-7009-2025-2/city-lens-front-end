@@ -34,7 +34,7 @@
     5: var(--neon-cyan),
     6: var(--nature-orange),
     14: var(--metro-green),
-    15: var(--urban-blue),
+    15: var(--color3),
     16: var(--urban-yellow)
   );
   
@@ -44,7 +44,7 @@
       border: 2px solid;
       border-color: var(--dark-blue);
       padding: 2rem;
-      background-color: #fff;
+      background-color: var(--color2);
       height: 100%;
       border-radius: 20px;
       width: 100%;
