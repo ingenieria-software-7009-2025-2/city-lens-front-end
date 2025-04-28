@@ -1,6 +1,6 @@
 // Contenedor principal para el formulario de login y registro
 .container {
-  background-color: #fff;
+  background-color: var(--color2);
   border-radius: 25px;
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.25),
@@ -76,11 +76,11 @@
 
 // Superposición con fondo de imagen y estilo de transición
 .overlay {
-  background-image: url("../../assets//images//city_map.png");
+  background-image: url("../../assets//images/city.gif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  color: #fff;
+  color: var(--color2);
   position: relative;
   left: -100%;
   height: 100%;
