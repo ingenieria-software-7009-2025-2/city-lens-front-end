@@ -1,4 +1,6 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import styles from './reportes.module.scss';
 import { Nav } from '../../components/Layout/Nav/nav';
 import { getLatestReports } from '../../services/../api/services/report';
@@ -11,7 +13,13 @@ import { ReportContext } from '../../context/ReportContext';
 export const Reportes: React.FC = () => {
   const [reports, setReports] = useState<ReportOutputBody[]>([]);
   const { deleteReport } = useContext(ReportContext);
+  const navigate = useNavigate();
 
+  const handleEdit = (id: string) => {
+    navigate(`/editar/${id}`);
+  };
+
+  
   useEffect(() => {
     const fetchReports = async () => {
       try {
@@ -63,12 +71,13 @@ export const Reportes: React.FC = () => {
                 </td>
                 <td>{report.title}</td>
                 <td>{report.description}</td>
-                <td>   <span className={`${styles.status} ${report.status === 'active' ? styles.active : styles.closed}`}>
+                <td>   <span className={`${styles.status} ${report.status === 'open' ? styles.active : styles.closed}`}>
                     {report.status === 'open' ? 'Activo' : 'Cerrado'}
                   </span></td>
                 <td>{`${report.location.latitude}, ${report.location.longitude}`}</td>
                 <td>{new Date(report.creationDate).toLocaleString()}</td>
-                <td><FontAwesomeIcon icon={faPenToSquare} /></td>
+                <td> <FontAwesomeIcon icon={faPenToSquare} onClick={() => handleEdit(report.id)}  style={{ cursor: 'pointer' }} 
+  /></td>
                 <td>
                   <FontAwesomeIcon 
                     icon={faCircleXmark} 

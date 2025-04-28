@@ -45,6 +45,7 @@ export const ReportProvider: React.FC<ReportProviderProps> = ({ children }) => {
     try {
       await updateReportService(data);
       console.log('Reporte actualizado:', data);
+      await fetchReports(); 
     } catch (error) {
       console.error('Error al actualizar el reporte:', error);
       throw error;

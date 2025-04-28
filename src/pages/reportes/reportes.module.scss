@@ -68,12 +68,12 @@ padding: 0;
 }
 
 .status.active {
-  background-color: var(--color11); /* verde para activo */
+  background-color: var(--color13); /* verde para activo */
   color: white;
 }
 
 .status.closed {
-  background-color: var(--color13); /* rojo para cerrado */
+  background-color: var(--color11); /* rojo para cerrado */
   color: white;
 }
 
