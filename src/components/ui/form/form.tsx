@@ -1,5 +1,5 @@
 // components/ui/Form/Form.tsx
-import React from "react";
+import React ,{ FormHTMLAttributes }from "react";
 import styles from "./form.module.scss";
 
 /**
@@ -8,7 +8,7 @@ import styles from "./form.module.scss";
  * @param children Contenido del formulario (inputs, labels, buttons, etc.).
  * @param className Clase opcional para personalizar estilos desde App.tsx.
  */
-interface FormProps {
+interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   onSubmit: (e: React.FormEvent) => void; // Función que se ejecuta al enviar el formulario
   children: React.ReactNode; // Contenido del formulario (inputs, labels, buttons, etc.)
   className?: string; // Clase opcional para personalizar estilos desde App.tsx

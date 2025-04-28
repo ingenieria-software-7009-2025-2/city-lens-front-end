@@ -35,8 +35,17 @@ export const updateReport = async (data: ReportUpdateData): Promise<any> => {
   try {
     const response = await api.post('/v1/report/update', {
       id: data.id,
-    }); 
-    console.log('Reporte actualizado:', response.data);
+      title: data.title,
+      description: data.description,
+      status: data.status,
+      resolutionDate: data.resolutionDate    }); 
+      console.log('Datos que se envían al backend:', {
+        id: data.id,
+        title: data.title,
+        description: data.description,
+        status: data.status,
+        resolvedAt: data.resolutionDate,
+      });
     return response.data;
   } catch (error: any) {
     console.error('Error al actualizar el reporte:', error.response?.data || error.message);
@@ -78,7 +87,7 @@ export const testReportEndpoint = async (): Promise<string> => {
 export const getLatestReports = async (): Promise<ReportOutputBody[]> => {
   try {
     const response = await api.get('/v1/list/latest');
-    console.log('Reportes obtenidos:', response.data);
+
     return response.data;
   } catch (error: any) {
     console.error('Error al obtener reportes:', error.response?.data || error.message);

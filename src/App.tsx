@@ -6,6 +6,7 @@ import ProtectedRoute from './components/others/ProtectedRoute/protectedroute';
 import { Login } from './pages/login';
 import { Menu } from './pages/menu';
 import { Edit } from './pages/edit';
+import { EditReport } from './pages/editReport';
 import { Reportes } from './pages/reportes';
 import { CreateReport } from './pages/createReport'; // Importa la página CreateReport
 import { ReportProvider } from './context/ReportContext';
@@ -43,6 +44,14 @@ function App() {
             </ProtectedRoute>
           } 
         />
+        <Route 
+  path="/editar/:id" 
+  element={
+    <ProtectedRoute>
+      <EditReport />
+    </ProtectedRoute>
+  }
+/>
         <Route 
           path="/create-report" 
           element={
