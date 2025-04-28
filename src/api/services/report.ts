@@ -1,5 +1,5 @@
 import api from '../config/axios'; // Importar la instancia de Axios configurada
-import { ReportCreateData, ReportUpdateData, ReportDeleteData,ReportOutputBody } from '../models/report'; // Importar las interfaces necesarias
+import { ReportCreateData, ReportUpdateData, ReportOutputBody } from '../models/report'; // Importar las interfaces necesarias
 
 /**
  * Crear un reporte
@@ -33,7 +33,9 @@ export const createReport = async (data: ReportCreateData): Promise<any> => {
  */
 export const updateReport = async (data: ReportUpdateData): Promise<any> => {
   try {
-    const response = await api.put('/v1/report/update', data); // Cambié POST a PUT, ya que es más adecuado para actualizaciones
+    const response = await api.post('/v1/report/update', {
+      id: data.id,
+    }); 
     console.log('Reporte actualizado:', response.data);
     return response.data;
   } catch (error: any) {
@@ -47,9 +49,9 @@ export const updateReport = async (data: ReportUpdateData): Promise<any> => {
  * @param data Datos necesarios para eliminar un reporte
  * @returns Respuesta del servidor
  */
-export const deleteReport = async (data: ReportDeleteData): Promise<any> => {
+export const deleteReport = async (data: ReportUpdateData): Promise<any> => {
   try {
-    const response = await api.delete('/v1/report/delete', { data }); // Usar DELETE con el payload en `data`
+    const response = await api.post('/v1/report/delete', {id:data.id} ); // Usar DELETE con el payload en `data`
     console.log('Reporte eliminado:', response.data);
     return response.data;
   } catch (error: any) {
