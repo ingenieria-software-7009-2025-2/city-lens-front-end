@@ -20,11 +20,7 @@
     resolutionDate?: string; // Fecha en formato ISO
   }
 
-  // Interfaz para eliminar un reporte
-  export interface ReportDeleteData {
-    id: string;
-    }
-    
+
 
 export interface ReportOutputBody {
   id: string;
