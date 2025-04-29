@@ -1,53 +1,75 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Button, Form, Input, Label } from "./../../components/ui";
 import styles from "./login.module.scss";
-import { login, register } from "../../api";
 import { useNavigate } from "react-router-dom"; // Para redirigir al usuario
 import { AuthContext } from "../../context/AuthContext";
 
+/**
+ * Componente funcional para manejar el inicio de sesión y registro de usuarios.
+ * Permite alternar entre los formularios de login y registro.
+ * Utiliza el contexto `AuthContext` para manejar la autenticación.
+ */
 export const Login: React.FC = () => {
+  // Estado para alternar entre login y registr
   const [isRegister, setIsRegister] = useState(false);
+
+  // Estados para manejar los campos del formulario
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [error, setError] = useState<string | null>(null); // Estado para manejar errores
   const navigate = useNavigate(); // Hook para redirección
-  const { login: authLogin } = useContext(AuthContext);
+  const { login: authLogin, register: authRegister } = useContext(AuthContext);
 
-  // Limpia los campos al montar el componente
+  /**
+   * Efecto para limpiar los campos de email y contraseña al montar el componente.
+   */
   useEffect(() => {
     setEmail("");
     setPassword("");
   }, []);
 
-  // Redirige al menú si el token aún existe
+  /**
+   * Efecto para redirigir al menú principal si el token de autenticación existe.
+   */
   useEffect(() => {
-    if (localStorage.getItem("authToken")) {
+    if (localStorage.getItem("token")) {
       navigate("/menu");
     }
   }, [navigate]);
 
+  /**
+   * Maneja el envío del formulario.
+   * Válida los campos y llama a las funciones de login o registro según corresponda.
+   * @param e Evento de envío del formulario.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
     // Validar que los campos no estén vacíos
-    if (!email || !password) {
-      setError("Por favor, completa todos los campos.");
-      return;
+    if (isRegister) {
+      if (!name || !lastName || !email || !password) {
+        setError("Por favor, completa todos los campos.");
+        return;
+      }
+    } else {
+      if (!email || !password) {
+        setError("Por favor, completa todos los campos.");
+        return;
+      }
     }
 
     try {
       if (isRegister) {
         // Lógica de registro
-        await register({ firstName: name, lastName, email, password });
+        await authRegister({ firstName: name, lastName, email, password });
         alert("Registro exitoso. Por favor, inicia sesión.");
         setIsRegister(false); // Cambiar al formulario de login después del registro
       } else {
         // Lógica de login
-        const response = await login(email, password);
-        authLogin(response.token); // Guarda el token en el contexto
+        await authLogin(email, password);
         alert("Inicio de sesión exitoso.");
         navigate("/menu"); // Redirige al menú
       }
@@ -62,24 +84,24 @@ export const Login: React.FC = () => {
       className={`${styles.container} ${isRegister ? styles["right-panel-active"] : ""}`}
       id="container"
     >
-      {/* Formulario de Registro */}
+      {/* Formulario de Register */}
       {isRegister && (
         <div
           className={`${styles["form-container"]} ${styles["register-container"]}`}
         >
           <Form onSubmit={handleSubmit}>
-            <h1>¡Registrate!</h1>
-            <Label htmlFor="name">Nombre(s):</Label>
+            <h1>Register here</h1>
+            <Label htmlFor="name">Name:</Label>
             <Input
               type="text"
-              placeholder="Escribe tu(s) nombre(s)"
+              placeholder="Enter your name"
               id="name"
               onChange={(e) => setName(e.target.value)}
             />
-            <Label htmlFor="lastName">Apellidos:</Label>
+            <Label htmlFor="lastName">Last Name:</Label>
             <Input
               type="text"
-              placeholder="Escribe tus apellidos"
+              placeholder="Enter your last name"
               id="lastName"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -87,21 +109,21 @@ export const Login: React.FC = () => {
             <Label htmlFor="email">Email:</Label>
             <Input
               type="email"
-              placeholder="Escribe tu correo:"
+              placeholder="Enter your email"
               id="registerEmail"
               onChange={(e) => setEmail(e.target.value)}
             />
             <Label htmlFor="password">Password:</Label>
             <Input
               type="password"
-              placeholder="Ingresa tu contraseña"
+              placeholder="Enter your password"
               id="registerPassword"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             {/* Mostrar error si existe */}
             {error && <p className={styles.error}>{error}</p>}
-            <Button type="submit">Registrarse</Button>
+            <Button type="submit">Register</Button>
           </Form>
         </div>
       )}
@@ -112,26 +134,26 @@ export const Login: React.FC = () => {
           className={`${styles["form-container"]} ${styles["login-container"]}`}
         >
           <Form onSubmit={handleSubmit}>
-            <h1>¡Bienvenido de Vuelta!</h1>
+            <h1>Login here</h1>
             <Label htmlFor="email">Email:</Label>
             <Input
               type="email"
-              placeholder="Escribe tu correo:"
+              placeholder="Enter your email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Label htmlFor="password">Contraseña:</Label>
+            <Label htmlFor="password">Password:</Label>
             <Input
               type="password"
-              placeholder="Ingresa tu contraseña:"
+              placeholder="Enter your password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             {/* Mostrar error si existe */}
             {error && <p className={styles.error}>{error}</p>}
-            <Button type="submit">Iniciar Sesión</Button>
+            <Button type="submit">Login</Button>
           </Form>
         </div>
       )}
@@ -144,12 +166,8 @@ export const Login: React.FC = () => {
           >
             {isRegister ? (
               <>
-                <h1 className={styles.title}>¿Ya tienes una cuenta?</h1>
-                {/* Probablemente hay una mejor manera de resaltar este texto */}
-                <p>
-                  {" "}
-                  <strong> Haz click abajo para iniciar sesión </strong>
-                </p>
+                <h1 className={styles.title}>Start Now!</h1>
+                <p>Register now to join our community</p>
                 <Button
                   variant="secondary"
                   onClick={() => {
@@ -157,21 +175,19 @@ export const Login: React.FC = () => {
                   }}
                   id="login"
                 >
-                  Iniciar Sesión
+                  Login
                 </Button>
               </>
             ) : (
               <>
-                <h1 className={styles.title}>¿Aun no tienes una cuenta?</h1>
-                <p>
-                  <strong>Haz click abajo para unirte a City Lens</strong>
-                </p>
+                <h1 className={styles.title}>Start Now!</h1>
+                <p>Register now to join our community</p>
                 <Button
                   variant="secondary"
                   onClick={() => setIsRegister(true)}
                   id="register"
                 >
-                  Registrarse
+                  Register
                 </Button>
               </>
             )}
