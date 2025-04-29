@@ -1,1 +1,1 @@
-export * from './editReport';
+export * from "./editReport";

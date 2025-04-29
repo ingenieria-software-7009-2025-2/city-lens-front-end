@@ -1,172 +1,169 @@
 // Estilos para la barra de navegación
 .nav {
-	background-color: var(--color35); // Actualizado
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 30px 15px 10px 10px;
-	color: var(--color2); // Actualizado
-	position: fixed;
+  background-color: var(--color35); // Actualizado
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 15px 10px 10px;
+  color: var(--color2); // Actualizado
+  position: fixed;
 
-	left: 10px;
-	top:25px;
-	bottom: 10px;
-	width: 15vw;
-	height: 95vh;
-	border-radius: 20px;
-	flex-direction: column;
+  left: 10px;
+  top: 25px;
+  bottom: 10px;
+  width: 15vw;
+  height: 95vh;
+  border-radius: 20px;
+  flex-direction: column;
 
+  // Logo de la aplicación, incluye una imagen y un texto
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    border-radius: 60px;
 
-	// Logo de la aplicación, incluye una imagen y un texto
-	&__logo {
-	  font-size: 1.5rem;
-	  font-weight: bold;
-	  display: flex;
-	  align-items: center;
-	  padding: 10px;
-	  position: relative;
-	  border-radius: 60px;
-	
-	  img {
-		width: 50px;
-		margin: 0 5px;
-	  }
-  
-	  span {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: var(--color2); // Actualizado
-	  }
-	}
-	&__logo:hover{
-		background-color: var(--color37); // Actualizado
-		
-		span {
-			color: var(--color16); // Actualizado
-			
-		  }
-	}
+    img {
+      width: 50px;
+      margin: 0 5px;
+    }
 
-	&__logo-link {
-	  text-decoration: none;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color2); // Actualizado
+    }
+  }
+  &__logo:hover {
+    background-color: var(--color37); // Actualizado
 
-	  &:hover .nav__logo-img {
-		content: url('../../../assets/images/Logo2.png'); // Cambia la imagen al hacer hover
-	  }
-	}
-  
-	// Lista de enlaces en la barra de navegación
-	&__list {
-	  list-style: none;
-	  display: flex;
-	  margin: 0;
-	  padding: 0;
-flex-direction: column;
-height: 50vh;
-position: absolute;
-top: 15vh;
+    span {
+      color: var(--color16); // Actualizado
+    }
+  }
 
-transition: all 0.1s
-	}
-  
-	// Estilos para los enlaces de la lista de navegación
-	&__item a {
-		display: flex;
-		justify-content: center;
-		gap: 10px; // Espacio entre ícono y texto
-		text-decoration: none;
-		color: var(--color2); // Actualizado
-		font-weight:800;
-		font-size: 20px;
+  &__logo-link {
+    text-decoration: none;
 
-		border-radius: 40px;
-		transition: color 0.3s;
-		padding: 20px 15px;
+    &:hover .nav__logo-img {
+      content: url("../../../assets/images/Logo2.png"); // Cambia la imagen al hacer hover
+    }
+  }
 
-		svg {
-			font-size: 20px;
-			color: inherit;
-			transition: color 0.3s;
-			margin-top: 2px;
-		}
+  // Lista de enlaces en la barra de navegación
+  &__list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    height: 50vh;
+    position: absolute;
+    top: 15vh;
 
-		&:hover {
-			background-color: var(--color37); // Actualizado
-			color: var(--color35); // Actualizado
+    transition: all 0.1s;
+  }
 
-			svg {
-				color: var(--color35);
-			}
-		}
-	}
+  // Estilos para los enlaces de la lista de navegación
+  &__item a {
+    display: flex;
+    justify-content: center;
+    gap: 10px; // Espacio entre ícono y texto
+    text-decoration: none;
+    color: var(--color2); // Actualizado
+    font-weight: 800;
+    font-size: 20px;
+
+    border-radius: 40px;
+    transition: color 0.3s;
+    padding: 20px 15px;
+
+    svg {
+      font-size: 20px;
+      color: inherit;
+      transition: color 0.3s;
+      margin-top: 2px;
+    }
+
+    &:hover {
+      background-color: var(--color37); // Actualizado
+      color: var(--color35); // Actualizado
+
+      svg {
+        color: var(--color35);
+      }
+    }
+  }
 }
-  // Contenedor del usuario (ícono de perfil)
+// Contenedor del usuario (ícono de perfil)
 .user {
-	background-color: var(--color35); // Actualizado
-	position: relative; // Necesario para posicionar 
-	cursor: pointer;
-	bottom: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 40px;
-	padding: 30px 50px;
-  
-	svg {
-	  width: 100%;
-	  font-size: 30px;
-	  border-radius: 50%;
-	}
-	a{
-		color: var(--color35);
-		width: 100%;
-		padding: 20px 0;
-		height: 100%;
-		margin: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	a:hover{
-		color: var(--color35);
-		background-color: var(--color37);
+  background-color: var(--color35); // Actualizado
+  position: relative; // Necesario para posicionar
+  cursor: pointer;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  padding: 30px 50px;
 
-	}
+  svg {
+    width: 100%;
+    font-size: 30px;
+    border-radius: 50%;
+  }
+  a {
+    color: var(--color35);
+    width: 100%;
+    padding: 20px 0;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  a:hover {
+    color: var(--color35);
+    background-color: var(--color37);
+  }
 }
-.user:hover{
-	background-color: var(--color37); // Actualizado
-	color: var(--color16); // Actualizado
+.user:hover {
+  background-color: var(--color37); // Actualizado
+  color: var(--color16); // Actualizado
 }
-	// Menú desplegable con animación
-	.user-menu {
-		position: absolute;
-		background: white;
-		border: 1px solid #ddd;
-		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		padding: 10px 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 200px;
+// Menú desplegable con animación
+.user-menu {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
 
-		opacity: 0;
-		transform: translateX(-50%);
-		pointer-events: none;
-		transition: opacity 0.3s ease, transform 0.3s ease;
-		bottom: 20px; 
-		left: 15vw; // Centra el menú horizontalmente respecto al contenedor
-	  
-		&.active {
-		  opacity: 1;
+  opacity: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  bottom: 20px;
+  left: 15vw; // Centra el menú horizontalmente respecto al contenedor
 
-		  pointer-events: auto;
-		}
+  &.active {
+    opacity: 1;
 
-		a:first-child{
-			border-bottom: solid 1px var(--color37);
-		}
-		
-		
-	  }
+    pointer-events: auto;
+  }
+
+  a:first-child {
+    border-bottom: solid 1px var(--color37);
+  }
+}

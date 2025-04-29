@@ -1,18 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Button, Form, Input, Label } from './../../components/ui';
-import styles from './createReport.module.scss';
-import Nav from '../../components/Layout/Nav/nav';
-import { ReportContext } from '../../context/ReportContext';
+import React, { useState, useContext, useEffect } from "react";
+import { Button, Form, Input, Label } from "./../../components/ui";
+import styles from "./createReport.module.scss";
+import Nav from "../../components/Layout/Nav/nav";
+import { ReportContext } from "../../context/ReportContext";
 
 export const CreateReport: React.FC = () => {
   const { createReport } = useContext(ReportContext); // Usar el contexto
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [direction, setdirection] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [municipality, setMunicipality] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [direction, setdirection] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [municipality, setMunicipality] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,19 +31,19 @@ export const CreateReport: React.FC = () => {
       };
 
       await createReport(reportData); // Llama a la función del contexto
-      alert('Reporte creado correctamente.');
+      alert("Reporte creado correctamente.");
 
       // Limpiar el formulario
-      setTitle('');
-      setDescription('');
-      setLatitude('');
-      setLongitude('');
-      setdirection('');
-      setPostalCode('');
-      setMunicipality('');
+      setTitle("");
+      setDescription("");
+      setLatitude("");
+      setLongitude("");
+      setdirection("");
+      setPostalCode("");
+      setMunicipality("");
     } catch (error) {
-      setError('Error al crear el reporte.');
-      console.error('Error:', error);
+      setError("Error al crear el reporte.");
+      console.error("Error:", error);
     }
   };
 
@@ -55,12 +55,12 @@ export const CreateReport: React.FC = () => {
           setLongitude(position.coords.longitude.toString());
         },
         (error) => {
-          console.error('Error al obtener la ubicación:', error);
-          setError('No se pudo obtener la ubicación actual.');
-        }
+          console.error("Error al obtener la ubicación:", error);
+          setError("No se pudo obtener la ubicación actual.");
+        },
       );
     } else {
-      setError('La geolocalización no está soportada por este navegador.');
+      setError("La geolocalización no está soportada por este navegador.");
     }
   };
 
@@ -71,7 +71,9 @@ export const CreateReport: React.FC = () => {
   return (
     <div className={styles.container} id="container">
       <Nav></Nav>
-      <div className={`${styles['form-container']} ${styles['register-container']}`}>
+      <div
+        className={`${styles["form-container"]} ${styles["register-container"]}`}
+      >
         <Form onSubmit={handleSubmit}>
           <h1>Crear Reporte</h1>
           <Label htmlFor="title">Título:</Label>
