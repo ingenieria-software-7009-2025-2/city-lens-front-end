@@ -1,5 +1,5 @@
 // components/ui/Form/Form.tsx
-import React ,{ FormHTMLAttributes }from "react";
+import React, { FormHTMLAttributes } from "react";
 import styles from "./form.module.scss";
 
 /**
