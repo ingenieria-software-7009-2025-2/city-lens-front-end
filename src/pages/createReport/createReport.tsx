@@ -4,8 +4,16 @@ import styles from "./createReport.module.scss";
 import Nav from "../../components/Layout/Nav/nav";
 import { ReportContext } from "../../context/ReportContext";
 
+/**
+ * Componente funcional para crear un reporte.
+ * Utiliza un formulario para capturar datos como título, descripción, ubicación, dirección, etc.
+ * También utiliza el contexto `ReportContext` para enviar los datos del reporte.
+ */
 export const CreateReport: React.FC = () => {
+  // Contexto para manejar la creación de reportes
   const { createReport } = useContext(ReportContext); // Usar el contexto
+
+  // Estados para manejar los valores del formulario
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [latitude, setLatitude] = useState("");
@@ -15,11 +23,17 @@ export const CreateReport: React.FC = () => {
   const [municipality, setMunicipality] = useState("");
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Maneja el envío del formulario.
+   * Valida los datos, los envía al contexto y limpia el formulario.
+   * @param e Evento de envío del formulario.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
     try {
+      // Datos del reporte a enviar
       const reportData = {
         title,
         description,
@@ -30,6 +44,7 @@ export const CreateReport: React.FC = () => {
         zipcode: postalCode,
       };
 
+      // Llama a la función del contexto para crear el reporte
       await createReport(reportData); // Llama a la función del contexto
       alert("Reporte creado correctamente.");
 
@@ -47,6 +62,10 @@ export const CreateReport: React.FC = () => {
     }
   };
 
+  /**
+   * Obtiene la ubicación actual del usuario utilizando la API de geolocalización del navegador.
+   * Actualiza los estados de latitud y longitud con los valores obtenidos.
+   */
   const handleGetCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -64,6 +83,7 @@ export const CreateReport: React.FC = () => {
     }
   };
 
+  // Efecto para obtener la ubicación actual al cargar el componente
   useEffect(() => {
     handleGetCurrentLocation();
   }, []);

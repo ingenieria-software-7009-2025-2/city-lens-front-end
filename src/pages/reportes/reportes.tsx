@@ -13,20 +13,38 @@ import {
 import icono from "../../assets/images/city-lens.ico";
 import { ReportContext } from "../../context/ReportContext";
 
+/**
+ * Componente funcional para mostrar una lista de reportes.
+ * Permite al usuario ver, editar y eliminar reportes.
+ * Utiliza el contexto `ReportContext` para manejar la eliminación de reportes.
+ */
 export const Reportes: React.FC = () => {
+  // Estado para almacenar la lista de reportes
   const [reports, setReports] = useState<ReportOutputBody[]>([]);
+
+  // Contexto para manejar la eliminación de reportes
   const { deleteReport } = useContext(ReportContext);
+
+  // Hook para redirigir al usuario a otra página
   const navigate = useNavigate();
 
+  /**
+   * Redirige al usuario a la página de edición de un reporte específico.
+   * @param id ID del reporte a editar.
+   */
   const handleEdit = (id: string) => {
     navigate(`/editar/${id}`);
   };
 
+  /**
+   * Efecto para cargar la lista de reportes al montar el componente.
+   * Llama a la función `getLatestReports` para obtener los reportes más recientes.
+   */
   useEffect(() => {
     const fetchReports = async () => {
       try {
         const data = await getLatestReports();
-        setReports(data);
+        setReports(data); // Actualiza el estado con los reportes obtenidos
       } catch (err) {
         console.error("Error al cargar reportes:", err);
       }
@@ -35,12 +53,17 @@ export const Reportes: React.FC = () => {
     fetchReports();
   }, []);
 
+  /**
+   * Maneja la eliminación de un reporte.
+   * Llama a la función `deleteReport` del contexto y actualiza la lista de reportes.
+   * @param id ID del reporte a eliminar.
+   */
   const handleDelete = async (id: string) => {
     try {
-      await deleteReport({ id }); // Aquí pasas solo el id
+      await deleteReport({ id }); // Elimina el reporte con el ID proporcionado
       console.log(`Reporte con ID ${id} eliminado.`);
 
-      // Actualizar la lista de reportes después de la eliminación
+      // Actualiza la lista de reportes después de la eliminación
       setReports(reports.filter((report) => report.id !== id));
     } catch (err) {
       console.error("Error eliminando el reporte:", err);

@@ -1,4 +1,6 @@
-// Interfaz para crear un reporte
+/**
+ * Interfaz que representa los datos necesarios para crear un reporte.
+ */
 export interface ReportCreateData {
   title: string;
   description: string;
@@ -10,7 +12,9 @@ export interface ReportCreateData {
   imageURL?: string;
 }
 
-// Interfaz para actualizar un reporte
+/**
+ * Interfaz que representa los datos necesarios para actualizar un reporte.
+ */
 export interface ReportUpdateData {
   id: string;
   title?: string;
@@ -19,6 +23,9 @@ export interface ReportUpdateData {
   resolutionDate?: string; // Fecha en formato ISO
 }
 
+/**
+ * Interfaz que representa los datos necesarios para actualizar un reporte.
+ */
 export interface ReportOutputBody {
   id: string;
   title: string;

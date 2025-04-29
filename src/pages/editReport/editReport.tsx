@@ -5,8 +5,16 @@ import Nav from "../../components/Layout/Nav/nav";
 import { ReportContext } from "../../context/ReportContext";
 import { useNavigate, useParams } from "react-router-dom";
 
+/**
+ * Componente funcional para editar un reporte existente.
+ * Permite al usuario modificar el título, descripción, estado y fecha de resolución de un reporte.
+ * Utiliza el contexto `ReportContext` para manejar la actualización de los datos.
+ */
 export const EditReport: React.FC = () => {
+  // Contexto para manejar los reportes
   const { updateReport, reports, fetchReports } = useContext(ReportContext); // OJO: fetchReports sí se usa
+
+  // Estados locales para manejar los datos del formulario
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<"open" | "closed">("open"); // Estado inicial 'open'
@@ -16,6 +24,11 @@ export const EditReport: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  /**
+   * Efecto para cargar los datos del reporte al montar el componente.
+   * Si no hay reportes cargados, los obtiene utilizando `fetchReports`.
+   * Luego, busca el reporte correspondiente al ID proporcionado.
+   */
   useEffect(() => {
     const cargarReporte = async () => {
       if (reports.length === 0) {
@@ -37,10 +50,19 @@ export const EditReport: React.FC = () => {
     cargarReporte();
   }, [reports, id, fetchReports]);
 
+  /**
+   * Cambia el estado del reporte entre 'open' y 'closed'.
+   */
   const handleStatusToggle = () => {
     setStatus((prev) => (prev === "open" ? "closed" : "open")); // Cambia entre 'open' y 'closed'
   };
 
+  /**
+   * Maneja el envío del formulario.
+   * Valida los datos y llama a la función `updateReport` del contexto para actualizar el reporte.
+   * Redirige al menú principal después de la actualización.
+   * @param e Evento de envío del formulario.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -67,6 +89,7 @@ export const EditReport: React.FC = () => {
     }
   };
 
+  // Muestra un mensaje de carga mientras se obtienen los datos del reporte
   if (loading) {
     return (
       <div className={styles.container} id="container">

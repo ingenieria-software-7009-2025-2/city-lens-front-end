@@ -4,9 +4,20 @@ import cityMap from "../../assets/images/city_map.png";
 import { Nav } from "../../components/Layout/Nav/nav";
 import { getUserInfo as fetchUserInfo } from "../../api/services/auth"; // Importar la función directamente
 
+/**
+ * Componente funcional que representa el menú principal de la aplicación.
+ * Muestra un saludo personalizado al usuario y un diseño de cuadrícula con diferentes secciones.
+ * Obtiene la información del usuario desde un servicio de autenticación.
+ */
 export const Menu: React.FC = () => {
+  // Estado para almacenar el nombre del usuario
   const [userName, setUserName] = useState("");
 
+  /**
+   * Efecto que se ejecuta al montar el componente.
+   * Llama a la función `fetchUserInfo` para obtener la información del usuario
+   * y actualiza el estado con el nombre del usuario.
+   */
   useEffect(() => {
     const fetchUserName = async () => {
       try {

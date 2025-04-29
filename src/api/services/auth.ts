@@ -1,7 +1,13 @@
 import api from "../config/axios"; // Importar la instancia de Axios configurada
 import { LoginResponse, RegisterData, UserUpdateData } from "../models/auth"; // Importar las interfaces desde models
 
-//todo LOGIN
+/**
+ * Inicia sesión con las credenciales proporcionadas y almacena el token de autenticación en el localStorage.
+ * @param {string} email - Correo electrónico del usuario.
+ * @param {string} password - Contraseña del usuario.
+ * @returns {Promise<LoginResponse>} - Promesa que resuelve con la respuesta del inicio de sesión.
+ * @throws {Error} - Lanza un error si ocurre un problema durante la solicitud.
+ */
 export const login = async (
   email: string,
   password: string,
@@ -18,7 +24,12 @@ export const login = async (
   return response.data;
 };
 
-//todo REGISTER
+/**
+ * Registra un nuevo usuario con los datos proporcionados.
+ * @param {RegisterData} data - Datos necesarios para registrar al usuario.
+ * @returns {Promise<void>} - Promesa que se resuelve cuando el registro es exitoso.
+ * @throws {Error} - Lanza un error si ocurre un problema durante la solicitud.
+ */
 export const register = async (data: RegisterData): Promise<void> => {
   await api.post("/v1/users/register", {
     first_name: data.firstName,
@@ -28,7 +39,11 @@ export const register = async (data: RegisterData): Promise<void> => {
   });
 };
 
-// todo LOGOUT
+/**
+ * Cierra la sesión del usuario eliminando el token de autenticación del localStorage.
+ * @returns {Promise<void>} - Promesa que se resuelve cuando la sesión se cierra correctamente.
+ * @throws {Error} - Lanza un error si no se encuentra un token o si ocurre un problema durante la solicitud.
+ */
 export const logout = async (): Promise<void> => {
   const token = localStorage.getItem("token"); // Obtén el token del localStorage
   if (!token) {
@@ -55,7 +70,11 @@ export const logout = async (): Promise<void> => {
   }
 };
 
-//todo GET USER
+/**
+ * Obtiene la información del usuario autenticado.
+ * @returns {Promise<LoginResponse["user"]>} - Promesa que resuelve con los datos del usuario.
+ * @throws {Error} - Lanza un error si no se encuentra un token o si ocurre un problema durante la solicitud.
+ */
 export const getUserInfo = async (): Promise<LoginResponse["user"]> => {
   const token = localStorage.getItem("token"); // Obtén el token del localStorage
   console.log("TOken get user:" + token);
@@ -74,7 +93,12 @@ export const getUserInfo = async (): Promise<LoginResponse["user"]> => {
   }
 };
 
-//todo UPDATE USER
+/**
+ * Actualiza la información del usuario autenticado con los cambios proporcionados.
+ * @param {UserUpdateData} userChanges - Datos que se desean actualizar del usuario.
+ * @returns {Promise<LoginResponse["user"]>} - Promesa que resuelve con los datos actualizados del usuario.
+ * @throws {Error} - Lanza un error si no se encuentra un token o si ocurre un problema durante la solicitud.
+ */
 export const updateUserInfo = async (
   userChanges: UserUpdateData,
 ): Promise<LoginResponse["user"]> => {
