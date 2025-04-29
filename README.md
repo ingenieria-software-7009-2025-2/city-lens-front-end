@@ -11,9 +11,7 @@ City Lens es una WebApp de Reportes Urbanos. Este es el frontend de la aplicaci�
 
 ## Ejecución e Instalación
 
-1. Se necesita tener Node.js instalado. Para hacerlo se siguen los métodos
-   oficiales [descritos aquí](https://nodejs.org/es).
-   Se necesita en particular la versión 22.14.0 LTS integrada con npm.
+1. Se necesita tener Node.js >= 22.14.0 (con `npm`) y PostgreSQL >=17.4 instalados.
 2. Se descarga el repositorio y se ingresa a la carpeta raíz.
 3. Se ejecutan los siguientes comandos en la terminal.
 
@@ -24,12 +22,15 @@ nvm current # Debe imprimir "v22.14.0".
 # Verify npm version:
 npm -v # Debe imprimir "10.9.2".
 npm install # Tomará la información de package-lock.json y package.json para instalar las dependencias.
-npm run dev # Mostrará un mensaje en pantalla para el siguiente paso.
 ```
 
-Al final del tercer paso en terminal se verá una dirección en localhost a la que se puede acceder para mostrar el
-funcionamiento
-del proyecto. Se espera que esta dirección sea `http://localhost:5173/`.
+4. En el archivo `src/main/resources/META-INF/persistence.xml` se debe de editar en la última linea la contraseña para conectarse la BD.
+5. Se ejecuta lo siguiente:
+
+```bash
+npm run dev # Mostrará en pantalla la dirección del servidor local
+```
+Se espera que esta dirección sea `http://localhost:5173/`.
 
 Para unir el backend, se siguen las instrucciones de [este repositorio](https://github.com/ingenieria-software-7009-2025-2/city-lens-api)
 
