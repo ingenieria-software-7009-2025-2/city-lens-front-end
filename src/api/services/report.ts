@@ -40,7 +40,7 @@ export const createReport = async (data: ReportCreateData): Promise<any> => {
  */
 export const updateReport = async (data: ReportUpdateData): Promise<any> => {
   try {
-    const response = await api.post("/v1/report/update", {
+    const response = await api.put("/v1/report/update", {
       id: data.id,
       title: data.title,
       description: data.description,
@@ -71,7 +71,7 @@ export const updateReport = async (data: ReportUpdateData): Promise<any> => {
  */
 export const deleteReport = async (data: ReportUpdateData): Promise<any> => {
   try {
-    const response = await api.post("/v1/report/delete", { id: data.id }); // Usar DELETE con el payload en `data`
+    const response = await api.post("/v1/report/delete", {id: data.id }); // Usar DELETE con el payload en `data`
     console.log("Reporte eliminado:", response.data);
     return response.data;
   } catch (error: any) {
