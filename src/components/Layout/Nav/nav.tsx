@@ -1,10 +1,58 @@
+/**
+ * `Nav` Component
+ *
+ * Este componente representa la barra de navegación principal de la aplicación.
+ * Incluye enlaces para navegar entre diferentes secciones y un menú de usuario con opciones adicionales.
+ *
+ * ## Dependencias:
+ * - `react-router-dom`: Utiliza `useNavigate` para manejar la navegación entre rutas.
+ * - `AuthContext`: Proporciona el contexto de autenticación para manejar el cierre de sesión.
+ * - `FontAwesomeIcon`: Se utiliza para mostrar íconos en los enlaces de navegación.
+ * - Archivos de estilo: `nav.scss` para los estilos personalizados.
+ * - Imágenes: `Logo.png` y `Logo2.png` para mostrar el logotipo.
+ *
+ * ## Props:
+ * Este componente no recibe props.
+ *
+ * ## Estado:
+ * - `menuOpen` (`boolean`): Controla si el menú de usuario está abierto o cerrado.
+ *
+ * ## Funciones:
+ * - `handleLogout`: Cierra la sesión del usuario, elimina el token del `localStorage` y redirige a la página de inicio de sesión.
+ * - `handleEditInfo`: Navega a la página de edición de información del usuario.
+ * - `handleReportInfo`: Navega a la página de reportes.
+ * - `handleGoToMenu`: Navega al menú principal.
+ * - `handleCreateReport`: Navega a la página de creación de reportes.
+ *
+ * ## Estructura del componente:
+ * - Logotipo: Muestra el logotipo de la aplicación.
+ * - Lista de navegación: Contiene enlaces para navegar entre las secciones principales (Inicio, Crear reporte, Reportes, Mapa).
+ * - Menú de usuario: Incluye opciones para editar información y cerrar sesión.
+ *
+ * ## Estilos:
+ * Los estilos se encuentran en el archivo `nav.scss`.
+ *
+ * ## Ejemplo de uso:
+ * ```tsx
+ * import Nav from "./nav";
+ *
+ * const App = () => {
+ *   return (
+ *     <div>
+ *       <Nav />
+ *     </div>
+ *   );
+ * };
+ *
+ * export default App;
+ */
+
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./nav.scss";
 import { AuthContext } from "../../../context/AuthContext";
 
 import logo from "../../../assets/images/Logo.png";
-import logo2 from "../../../assets/images/Logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,

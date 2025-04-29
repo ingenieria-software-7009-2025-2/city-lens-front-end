@@ -4,8 +4,16 @@ import styles from "./login.module.scss";
 import { useNavigate } from "react-router-dom"; // Para redirigir al usuario
 import { AuthContext } from "../../context/AuthContext";
 
+/**
+ * Componente funcional para manejar el inicio de sesión y registro de usuarios.
+ * Permite alternar entre los formularios de login y registro.
+ * Utiliza el contexto `AuthContext` para manejar la autenticación.
+ */
 export const Login: React.FC = () => {
+  // Estado para alternar entre login y registr
   const [isRegister, setIsRegister] = useState(false);
+
+  // Estados para manejar los campos del formulario
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -14,19 +22,28 @@ export const Login: React.FC = () => {
   const navigate = useNavigate(); // Hook para redirección
   const { login: authLogin, register: authRegister } = useContext(AuthContext);
 
-  // Limpia los campos al montar el componente
+  /**
+   * Efecto para limpiar los campos de email y contraseña al montar el componente.
+   */
   useEffect(() => {
     setEmail("");
     setPassword("");
   }, []);
 
-  // Redirige al menú si el token aún existe
+  /**
+   * Efecto para redirigir al menú principal si el token de autenticación existe.
+   */
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/menu");
     }
   }, [navigate]);
 
+  /**
+   * Maneja el envío del formulario.
+   * Válida los campos y llama a las funciones de login o registro según corresponda.
+   * @param e Evento de envío del formulario.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);

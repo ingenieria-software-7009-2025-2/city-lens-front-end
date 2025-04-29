@@ -4,7 +4,13 @@ import styles from "./edit.module.scss";
 import { useNavigate } from "react-router-dom"; // Para redirigir al usuario
 import { AuthContext } from "../../context/AuthContext";
 
+/**
+ * Componente funcional para editar la información del usuario.
+ * Permite al usuario actualizar su nombre, apellido y correo electrónico.
+ * Utiliza el contexto `AuthContext` para obtener y actualizar los datos del usuario.
+ */
 export const Edit: React.FC = () => {
+  // Estados para manejar los valores del formulario
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,7 +18,11 @@ export const Edit: React.FC = () => {
   const navigate = useNavigate();
   const { getUserInfo, updateUserInfo } = useContext(AuthContext);
 
-  // Cargar los datos del usuario al montar el componente
+  /**
+   * Efecto para cargar los datos del usuario al montar el componente.
+   * Llama a la función `getUserInfo` del contexto para obtener los datos del usuario.
+   * Redirige al login en caso de error.
+   */
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -30,6 +40,12 @@ export const Edit: React.FC = () => {
     fetchUserData();
   }, [getUserInfo, navigate]);
 
+  /**
+   * Maneja el envío del formulario.
+   * Valida los datos y llama a la función `updateUserInfo` del contexto para actualizar la información del usuario.
+   * Redirige al menú principal después de la actualización.
+   * @param e Evento de envío del formulario.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
