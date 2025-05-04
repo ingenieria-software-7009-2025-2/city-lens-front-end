@@ -3,7 +3,8 @@ import styles from "./menu.module.scss";
 import cityMap from "../../assets/images/city_map.png";
 import { Nav } from "../../components/Layout/Nav/nav";
 import { getUserInfo as fetchUserInfo } from "../../api/services/auth"; // Importar la función directamente
-
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 /**
  * Componente funcional que representa el menú principal de la aplicación.
  * Muestra un saludo personalizado al usuario y un diseño de cuadrícula con diferentes secciones.
@@ -47,7 +48,22 @@ export const Menu: React.FC = () => {
         <div className={styles.div5}>Div 5</div>
         <div className={styles.div6}>Div 6 </div>
         <div className={styles.div14}>
-          <img src={cityMap} alt="City Map" />
+          <MapContainer
+            center={[19.4326, -99.1332]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: "100%", width: "100%", borderRadius: "20px" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[19.4326, -99.1332]}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
         <div className={styles.div15}>15</div>
       </div>

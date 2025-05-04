@@ -89,6 +89,10 @@ const Nav = () => {
     navigate("/create-report"); // Navega a la página de creación de reportes
   };
 
+  const handleGoToMap = () => {
+    navigate("/mapa"); // Redirige a la página del mapa
+  };
+
   return (
     <nav className="nav">
       <a href="" className="nav__logo-link">
@@ -117,7 +121,7 @@ const Nav = () => {
           </a>
         </li>
         <li className="nav__item">
-          <a href="#">
+          <a href="#" onClick={handleGoToMap}>
             <FontAwesomeIcon icon={faMap} />
             Mapa
           </a>
