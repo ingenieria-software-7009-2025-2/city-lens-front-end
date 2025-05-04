@@ -9,6 +9,7 @@ import { Edit } from "./pages/edit";
 import { EditReport } from "./pages/editReport";
 import { Reportes } from "./pages/reportes";
 import { CreateReport } from "./pages/createReport"; // Importa la página CreateReport
+import { Mapa } from "./pages/map/map"; // Importa la página Mapa
 import { ReportProvider } from "./context/ReportContext";
 
 function App() {
@@ -56,6 +57,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CreateReport />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mapa"
+            element={
+              <ProtectedRoute>
+                <Mapa />{" "}
               </ProtectedRoute>
             }
           />
