@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./reportes.module.scss";
 import { Nav } from "../../components/Layout/Nav/nav";
-import { getLatestReports } from "../../services/../api/services/report";
+import {
+  getLatestReports,
+  getOldestReports,
+  getOpenReports,
+  getRecentlyResolved,
+} from "../../services/../api/services/report";
 import { ReportOutputBody } from "../../api/models/report";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -70,11 +75,54 @@ export const Reportes: React.FC = () => {
     }
   };
 
+  const fetchLatest = async () => {
+    try {
+      const data = await getLatestReports(); // Llama a la función del servicio
+      setReports(data); // Actualiza el estado con los reportes más recientes
+    } catch (err) {
+      console.error("Error al obtener los reportes más recientes:", err);
+    }
+  };
+
+  const fetchOldest = async () => {
+    try {
+      const data = await getOldestReports(); // Asegúrate de tener esta función en tu servicio
+      setReports(data);
+    } catch (err) {
+      console.error("Error al obtener los reportes más antiguos:", err);
+    }
+  };
+
+  const fetchOpen = async () => {
+    try {
+      const data = await getOpenReports(); // Asegúrate de tener esta función en tu servicio
+      setReports(data);
+    } catch (err) {
+      console.error("Error al obtener los reportes abiertos:", err);
+    }
+  };
+
+  const fetchClosed = async () => {
+    try {
+      const data = await getRecentlyResolved(); // Asegúrate de tener esta función en tu servicio
+      setReports(data);
+    } catch (err) {
+      console.error("Error al obtener los reportes cerrados:", err);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Nav />
       <div className={styles.reportContainer}>
         <h1>Lista de Reportes</h1>
+        <div className={styles.filterButtons}>
+          <button onClick={fetchLatest}>Más recientes</button>
+          <button onClick={fetchOldest}>Más antiguos</button>
+          <button onClick={fetchOpen}>Abiertos</button>
+          <button onClick={fetchClosed}>Cerrados</button>
+        </div>
+
         <table className={styles.table}>
           <thead>
             <tr>

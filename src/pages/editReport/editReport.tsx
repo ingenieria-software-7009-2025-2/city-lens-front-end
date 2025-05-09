@@ -102,10 +102,8 @@ export const EditReport: React.FC = () => {
   return (
     <div className={styles.container} id="container">
       <Nav />
-      <div
-        className={`${styles["form-container"]} ${styles["register-container"]}`}
-      >
-        <Form onSubmit={handleSubmit}>
+      <div className={`${styles["form-container"]}`}>
+        <Form onSubmit={handleSubmit} className={styles.form}>
           <h1>Editar Reporte</h1>
 
           <Label htmlFor="title">Título:</Label>

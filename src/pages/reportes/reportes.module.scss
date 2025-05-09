@@ -72,7 +72,29 @@
   color: white;
 }
 
+
 .status.closed {
   background-color: var(--color11); /* rojo para cerrado */
   color: white;
+}
+
+
+.filterButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+
+  button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #34495e;
+    }
+  }
 }

@@ -8,8 +8,8 @@
   color: var(--color2); // Actualizado
   position: fixed;
 
-  left: 10px;
-  top: 25px;
+  left: 4px;
+  top: 20px;
   bottom: 10px;
   width: 15vw;
   height: 95vh;
@@ -147,7 +147,7 @@
   flex-direction: column;
   justify-content: center;
   width: 200px;
-
+  z-index: 1000;
   opacity: 0;
   transform: translateX(-50%);
   pointer-events: none;
