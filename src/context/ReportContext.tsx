@@ -52,7 +52,9 @@ export const ReportProvider: React.FC<ReportProviderProps> = ({ children }) => {
 
   const updateReport = async (data: ReportUpdateData) => {
     try {
+      console.log("Datos que se envían al backend:");
       await updateReportService(data);
+      ("");
       console.log("Reporte actualizado:", data);
       await fetchReports();
     } catch (error) {
