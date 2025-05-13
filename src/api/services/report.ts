@@ -157,20 +157,11 @@ export const getRecentlyResolved = async (): Promise<ReportOutputBody[]> => {
     throw error;
   }
 };
-/**
- * Buscar reportes por código postal
- * @param data Datos necesarios para realizar la búsqueda (código postal y orden)
- * @returns Lista de reportes filtrados
- */
 export const searchReports = async (
   data: ReportSearchData
 ): Promise<ReportOutputBody[]> => {
   try {
-    const response = await api.post("/v1/report/search", data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await api.post("/v1/report/search", {zipcode: data.zipcode , ascending: data.ascending});
     console.log("Reportes filtrados obtenidos:", response.data);
     return response.data;
   } catch (error: any) {

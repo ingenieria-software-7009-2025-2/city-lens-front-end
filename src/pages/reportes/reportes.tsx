@@ -123,14 +123,16 @@ export const Reportes: React.FC = () => {
               value={zipcode}
               onChange={(e) => setZipcode(e.target.value)}
             />
-            <label>
-              <input
-                type="checkbox"
-                checked={ascending}
-                onChange={(e) => setAscending(e.target.checked)}
-              />
-              Orden Ascendente
-            </label>
+            {/* Ocultar el checkbox */}
+            <div style={{ display: "none" }}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={ascending}
+                  onChange={(e) => setAscending(e.target.checked)}
+                />
+              </label>
+            </div>
             <button type="submit">Buscar</button>
           </form>
           <div className={styles.filterButtons}>
