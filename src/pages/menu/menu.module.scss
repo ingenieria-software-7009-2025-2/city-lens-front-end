@@ -66,7 +66,10 @@ $div-colors: (
 // Ajustes específicos para los divs
 .div6 {
   grid-column: span 2; // Ocupa 2 columnas
-  grid-row: span 1; // Ocupa 2 filas
+  grid-row: span 2; // Ocupa 2 filas
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .div14 {
@@ -90,4 +93,48 @@ $div-colors: (
 .div5 {
   grid-column: span 1; // Ocupa 1 columna
   grid-row: span 1; // Ocupa 1 fila
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.div2 p,
+.div3 p,
+.div4 p,
+.div5 p{
+margin: 0
+}
+.div2 h3,
+.div3 h3,
+.div4 h3,
+.div5 h3{
+margin: 0
+}
+
+
+
+.active {
+  background-color: var(--color13);
+  color: var(--color2);
+  border: 2px solid var(--dark-blue);
+  padding: 10px;
+  border-radius: 10px;
+  margin:10px ;
+}
+
+.closed{
+  background-color: var(--color11);
+  color: var(--color2);
+  border: 2px solid var(--dark-blue);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px ;
+}
+.reportItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--color2);
+  margin-bottom: 10px;
 }

@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+  }
+  
+  .mapWrapper {
+	flex: 1;
+	margin-left: 15vw; // Asegúrate de que este valor coincida con el ancho de la barra de navegación
+	padding: 25px 10px 10px 10px; // Ajusta los valores según sea necesario
+  }
+  

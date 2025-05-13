@@ -3,6 +3,7 @@ import { Button, Form, Input, Label } from "./../../components/ui";
 import styles from "./createReport.module.scss";
 import Nav from "../../components/Layout/Nav/nav";
 import { ReportContext } from "../../context/ReportContext";
+import { reverseGeocode } from "../../api/services/geocoding";
 
 /**
  * Componente funcional para crear un reporte.
@@ -18,7 +19,7 @@ export const CreateReport: React.FC = () => {
   const [description, setDescription] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [direction, setdirection] = useState("");
+  const [direction, setDirection] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [municipality, setMunicipality] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +54,7 @@ export const CreateReport: React.FC = () => {
       setDescription("");
       setLatitude("");
       setLongitude("");
-      setdirection("");
+      setDirection("");
       setPostalCode("");
       setMunicipality("");
     } catch (error) {
@@ -69,14 +70,27 @@ export const CreateReport: React.FC = () => {
   const handleGetCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLatitude(position.coords.latitude.toString());
-          setLongitude(position.coords.longitude.toString());
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          setLatitude(lat.toString());
+          setLongitude(lon.toString());
+
+          try {
+            const location = await reverseGeocode(lat, lon);
+            setMunicipality(location.city); // Actualiza el municipio
+            setDirection(`${location.suburb}, ${location.city}`); // Dirección completa
+            setPostalCode(location.postalCode || ""); // Código postal
+          } catch (error) {
+            console.error("Error al obtener la ubicación:", error);
+            setError("No se pudo obtener la ubicación actual.");
+          }
         },
         (error) => {
           console.error("Error al obtener la ubicación:", error);
           setError("No se pudo obtener la ubicación actual.");
-        },
+        }
       );
     } else {
       setError("La geolocalización no está soportada por este navegador.");
@@ -134,12 +148,11 @@ export const CreateReport: React.FC = () => {
             id="adress"
             value={direction}
             placeholder="Ej: Calle Reforma #123, Ciudad de México"
-            onChange={(e) => setdirection(e.target.value)}
+            onChange={(e) => setDirection(e.target.value)}
           />
           <Label htmlFor="postalCode">Código Postal:</Label>
           <Input
             type="text"
-            id="postalCode"
             value={postalCode}
             placeholder="Ej: 01000"
             onChange={(e) => setPostalCode(e.target.value)}

@@ -3,6 +3,7 @@ import {
   ReportCreateData,
   ReportUpdateData,
   ReportOutputBody,
+  ReportSearchData,
 } from "../models/report"; // Importar las interfaces necesarias
 
 /**
@@ -40,7 +41,7 @@ export const createReport = async (data: ReportCreateData): Promise<any> => {
  */
 export const updateReport = async (data: ReportUpdateData): Promise<any> => {
   try {
-    const response = await api.post("/v1/report/update", {
+    const response = await api.put("/v1/report/update", {
       id: data.id,
       title: data.title,
       description: data.description,
@@ -110,6 +111,63 @@ export const getLatestReports = async (): Promise<ReportOutputBody[]> => {
     console.error(
       "Error al obtener reportes:",
       error.response?.data || error.message,
+    );
+    throw error;
+  }
+};
+export const getOldestReports = async (): Promise<ReportOutputBody[]> => {
+  try {
+    const response = await api.get("/v1/list/oldest");
+
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error al obtener reportes:",
+      error.response?.data || error.message,
+    );
+    throw error;
+  }
+};
+  /**
+ * Obtener los reportes abiertos
+ */
+export const getOpenReports = async (): Promise<ReportOutputBody[]> => {
+  try {
+    const response = await api.get("/v1/list/active");
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error al obtener reportes abiertos:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+export const getRecentlyResolved = async (): Promise<ReportOutputBody[]> => {
+  try {
+    const response = await api.get("/v1/list/recently-resolved");
+
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error al obtener reportes:",
+      error.response?.data || error.message,
+    );
+    throw error;
+  }
+};
+export const searchReports = async (
+  data: ReportSearchData
+): Promise<ReportOutputBody[]> => {
+  try {
+    const response = await api.post("/v1/report/search", {zipcode: data.zipcode , ascending: data.ascending});
+    console.log("Reportes filtrados obtenidos:", response.data);
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error al buscar reportes por código postal:",
+      error.response?.data || error.message
     );
     throw error;
   }
