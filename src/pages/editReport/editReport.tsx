@@ -67,6 +67,23 @@ export const EditReport: React.FC = () => {
     e.preventDefault();
     setError(null);
 
+    if (!title.trim()) {
+      setError("El título no puede estar vacío.");
+      return;
+    }
+
+    if (!description.trim()) {
+      setError("La descripción no puede estar vacía.");
+      return;
+    }
+
+    if (resolutionDate && new Date(resolutionDate) < new Date()) {
+      setError(
+        "La fecha de resolución no puede ser anterior a la fecha actual."
+      );
+      return;
+    }
+
     try {
       if (!id) {
         setError("ID de reporte inválido.");
@@ -78,14 +95,19 @@ export const EditReport: React.FC = () => {
         title,
         description,
         status,
-        resolutionDate,
+        resolutionDate: resolutionDate, // Enviar null si no hay fecha
       };
+
+      console.log("Datos enviados al backend:", updatedData);
 
       await updateReport(updatedData);
       alert("Reporte actualizado correctamente.");
       navigate("/menu");
-    } catch (error) {
-      setError("Error al actualizar el reporte.");
+    } catch (error: any) {
+      console.error("Error al actualizar el reporte:", error);
+      setError(
+        error.response?.data?.message || "Error al actualizar el reporte."
+      );
     }
   };
 

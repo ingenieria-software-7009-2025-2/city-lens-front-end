@@ -3,6 +3,7 @@ import {
   ReportCreateData,
   ReportUpdateData,
   ReportOutputBody,
+  ReportSearchData,
 } from "../models/report"; // Importar las interfaces necesarias
 
 /**
@@ -152,6 +153,30 @@ export const getRecentlyResolved = async (): Promise<ReportOutputBody[]> => {
     console.error(
       "Error al obtener reportes:",
       error.response?.data || error.message,
+    );
+    throw error;
+  }
+};
+/**
+ * Buscar reportes por código postal
+ * @param data Datos necesarios para realizar la búsqueda (código postal y orden)
+ * @returns Lista de reportes filtrados
+ */
+export const searchReports = async (
+  data: ReportSearchData
+): Promise<ReportOutputBody[]> => {
+  try {
+    const response = await api.post("/v1/report/search", data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("Reportes filtrados obtenidos:", response.data);
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error al buscar reportes por código postal:",
+      error.response?.data || error.message
     );
     throw error;
   }

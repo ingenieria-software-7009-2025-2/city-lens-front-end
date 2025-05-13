@@ -4,17 +4,20 @@ import {
   updateReport as updateReportService,
   deleteReport as deleteReportService,
   getLatestReports,
+  searchReports as searchReportsService, // Importar la función de búsqueda
 } from "../api/services/report";
 import {
   ReportCreateData,
   ReportUpdateData,
   ReportOutputBody,
+  ReportSearchData, // Importar el modelo de búsqueda
 } from "../api/models/report";
 
 export const ReportContext = createContext<{
   createReport: (data: ReportCreateData) => Promise<void>;
   updateReport: (data: ReportUpdateData) => Promise<void>;
   deleteReport: (data: ReportUpdateData) => Promise<void>;
+  searchReports: (data: ReportSearchData) => Promise<ReportOutputBody[]>; // Agregar la función de búsqueda
   reports: ReportOutputBody[];
   fetchReports: () => Promise<void>;
 }>({
@@ -26,6 +29,9 @@ export const ReportContext = createContext<{
   },
   deleteReport: async () => {
     throw new Error("deleteReport no está implementado.");
+  },
+  searchReports: async () => {
+    throw new Error("searchReports no está implementado.");
   },
   reports: [],
   fetchReports: async () => {
@@ -54,7 +60,6 @@ export const ReportProvider: React.FC<ReportProviderProps> = ({ children }) => {
     try {
       console.log("Datos que se envían al backend:");
       await updateReportService(data);
-      ("");
       console.log("Reporte actualizado:", data);
       await fetchReports();
     } catch (error) {
@@ -82,12 +87,27 @@ export const ReportProvider: React.FC<ReportProviderProps> = ({ children }) => {
     }
   };
 
+  // Nueva función para buscar reportes
+  const searchReports = async (
+    data: ReportSearchData
+  ): Promise<ReportOutputBody[]> => {
+    try {
+      const reports = await searchReportsService(data);
+      console.log("Reportes filtrados obtenidos:", reports);
+      return reports;
+    } catch (error) {
+      console.error("Error al buscar reportes:", error);
+      throw error;
+    }
+  };
+
   return (
     <ReportContext.Provider
       value={{
         createReport,
         updateReport,
         deleteReport,
+        searchReports, // Agregar la función al contexto
         reports,
         fetchReports,
       }}
@@ -113,6 +133,12 @@ export const useUpdateReport = () => {
 export const useDeleteReport = () => {
   const { deleteReport } = useContext(ReportContext);
   return deleteReport;
+};
+
+// Hook para buscar reportes
+export const useSearchReports = () => {
+  const { searchReports } = useContext(ReportContext);
+  return searchReports;
 };
 
 // Hook para obtener los reportes

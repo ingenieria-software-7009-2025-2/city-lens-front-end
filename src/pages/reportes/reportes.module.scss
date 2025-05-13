@@ -78,7 +78,10 @@
   color: white;
 }
 
-
+.filters{
+  display: flex;
+  justify-content: space-between;
+}
 .filterButtons {
   display: flex;
   gap: 10px;
@@ -98,4 +101,42 @@
       background-color: #34495e;
     }
   }
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+
+  input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #34495e;
+    }
+  }
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
 }

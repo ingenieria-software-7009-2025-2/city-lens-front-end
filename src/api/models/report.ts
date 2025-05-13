@@ -24,6 +24,14 @@ export interface ReportUpdateData {
 }
 
 /**
+ * Interfaz que representa los datos necesarios para buscar reportes.
+ */
+export interface ReportSearchData {
+  zipcode: string;
+  ascending?: boolean; // Orden ascendente o descendente (opcional)
+}
+
+/**
  * Interfaz que representa los datos necesarios para actualizar un reporte.
  */
 export interface ReportOutputBody {

@@ -16,40 +16,27 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import icono from "../../assets/images/city-lens.ico";
-import { ReportContext } from "../../context/ReportContext";
+import { ReportContext, useSearchReports } from "../../context/ReportContext";
 
-/**
- * Componente funcional para mostrar una lista de reportes.
- * Permite al usuario ver, editar y eliminar reportes.
- * Utiliza el contexto `ReportContext` para manejar la eliminación de reportes.
- */
 export const Reportes: React.FC = () => {
-  // Estado para almacenar la lista de reportes
   const [reports, setReports] = useState<ReportOutputBody[]>([]);
+  const [zipcode, setZipcode] = useState(""); // Estado para el código postal
+  const [ascending, setAscending] = useState(false); // Estado para el orden de búsqueda
+  const [error, setError] = useState<string | null>(null); // Estado para manejar errores
 
-  // Contexto para manejar la eliminación de reportes
   const { deleteReport } = useContext(ReportContext);
-
-  // Hook para redirigir al usuario a otra página
+  const searchReports = useSearchReports(); // Usar el hook para buscar reportes
   const navigate = useNavigate();
 
-  /**
-   * Redirige al usuario a la página de edición de un reporte específico.
-   * @param id ID del reporte a editar.
-   */
   const handleEdit = (id: string) => {
     navigate(`/editar/${id}`);
   };
 
-  /**
-   * Efecto para cargar la lista de reportes al montar el componente.
-   * Llama a la función `getLatestReports` para obtener los reportes más recientes.
-   */
   useEffect(() => {
     const fetchReports = async () => {
       try {
         const data = await getLatestReports();
-        setReports(data); // Actualiza el estado con los reportes obtenidos
+        setReports(data);
       } catch (err) {
         console.error("Error al cargar reportes:", err);
       }
@@ -58,17 +45,10 @@ export const Reportes: React.FC = () => {
     fetchReports();
   }, []);
 
-  /**
-   * Maneja la eliminación de un reporte.
-   * Llama a la función `deleteReport` del contexto y actualiza la lista de reportes.
-   * @param id ID del reporte a eliminar.
-   */
   const handleDelete = async (id: string) => {
     try {
-      await deleteReport({ id }); // Elimina el reporte con el ID proporcionado
+      await deleteReport({ id });
       console.log(`Reporte con ID ${id} eliminado.`);
-
-      // Actualiza la lista de reportes después de la eliminación
       setReports(reports.filter((report) => report.id !== id));
     } catch (err) {
       console.error("Error eliminando el reporte:", err);
@@ -77,8 +57,8 @@ export const Reportes: React.FC = () => {
 
   const fetchLatest = async () => {
     try {
-      const data = await getLatestReports(); // Llama a la función del servicio
-      setReports(data); // Actualiza el estado con los reportes más recientes
+      const data = await getLatestReports();
+      setReports(data);
     } catch (err) {
       console.error("Error al obtener los reportes más recientes:", err);
     }
@@ -86,7 +66,7 @@ export const Reportes: React.FC = () => {
 
   const fetchOldest = async () => {
     try {
-      const data = await getOldestReports(); // Asegúrate de tener esta función en tu servicio
+      const data = await getOldestReports();
       setReports(data);
     } catch (err) {
       console.error("Error al obtener los reportes más antiguos:", err);
@@ -95,7 +75,7 @@ export const Reportes: React.FC = () => {
 
   const fetchOpen = async () => {
     try {
-      const data = await getOpenReports(); // Asegúrate de tener esta función en tu servicio
+      const data = await getOpenReports();
       setReports(data);
     } catch (err) {
       console.error("Error al obtener los reportes abiertos:", err);
@@ -104,10 +84,29 @@ export const Reportes: React.FC = () => {
 
   const fetchClosed = async () => {
     try {
-      const data = await getRecentlyResolved(); // Asegúrate de tener esta función en tu servicio
+      const data = await getRecentlyResolved();
       setReports(data);
     } catch (err) {
       console.error("Error al obtener los reportes cerrados:", err);
+    }
+  };
+
+  // Manejar la búsqueda de reportes
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+
+    if (!zipcode.trim()) {
+      setError("El código postal no puede estar vacío.");
+      return;
+    }
+
+    try {
+      const data = await searchReports({ zipcode, ascending });
+      setReports(data); // Actualiza la lista de reportes con los resultados de la búsqueda
+    } catch (err) {
+      console.error("Error al buscar reportes:", err);
+      setError("No se pudieron obtener los reportes. Inténtalo de nuevo.");
     }
   };
 
@@ -116,12 +115,33 @@ export const Reportes: React.FC = () => {
       <Nav />
       <div className={styles.reportContainer}>
         <h1>Lista de Reportes</h1>
-        <div className={styles.filterButtons}>
-          <button onClick={fetchLatest}>Más recientes</button>
-          <button onClick={fetchOldest}>Más antiguos</button>
-          <button onClick={fetchOpen}>Abiertos</button>
-          <button onClick={fetchClosed}>Cerrados</button>
+        <div className={styles.filters}>
+          <form onSubmit={handleSearch} className={styles.searchForm}>
+            <input
+              type="text"
+              placeholder="Código Postal"
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+            />
+            <label>
+              <input
+                type="checkbox"
+                checked={ascending}
+                onChange={(e) => setAscending(e.target.checked)}
+              />
+              Orden Ascendente
+            </label>
+            <button type="submit">Buscar</button>
+          </form>
+          <div className={styles.filterButtons}>
+            <button onClick={fetchLatest}>Más recientes</button>
+            <button onClick={fetchOldest}>Más antiguos</button>
+            <button onClick={fetchOpen}>Abiertos</button>
+            <button onClick={fetchClosed}>Cerrados</button>
+          </div>
         </div>
+
+        {error && <p className={styles.error}>{error}</p>}
 
         <table className={styles.table}>
           <thead>
@@ -145,17 +165,22 @@ export const Reportes: React.FC = () => {
                 <td>{report.title}</td>
                 <td>{report.description}</td>
                 <td>
-                  {" "}
                   <span
-                    className={`${styles.status} ${report.status === "open" ? styles.active : styles.closed}`}
+                    className={`${styles.status} ${
+                      report.status === "open" ? styles.active : styles.closed
+                    }`}
                   >
                     {report.status === "open" ? "Activo" : "Cerrado"}
                   </span>
                 </td>
                 <td>{`${report.location.latitude}, ${report.location.longitude}`}</td>
-                <td>{new Date(report.creationDate).toLocaleString()}</td>
                 <td>
-                  {" "}
+                  {new Intl.DateTimeFormat("es-MX", {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                  }).format(new Date(report.creationDate))}
+                </td>
+                <td>
                   <FontAwesomeIcon
                     icon={faPenToSquare}
                     onClick={() => handleEdit(report.id)}
